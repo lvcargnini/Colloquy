@@ -1,0 +1,67 @@
+.emoticon.smile samp,
+.emoticon.wink samp,
+.emoticon.happy samp,
+.emoticon.frown samp,
+.emoticon.annoyed samp,
+.emoticon.razz samp,
+.emoticon.angry samp,
+.emoticon.cool samp,
+.emoticon.angel samp,
+.emoticon.anime samp,
+.emoticon.suprised samp,
+.emoticon.shocked samp,
+.emoticon.cry samp {
+	display: none;
+}
+
+.emoticon:after {
+	vertical-align: -40%;
+}
+
+.emoticon.smile:after {
+	content: url( "smile.tiff" );
+}
+
+.emoticon.wink:after {
+	content: url( "wink.tiff" );
+}
+
+.emoticon.happy:after {
+	content: url( "laugh.tiff" );
+}
+
+.emoticon.frown:after {
+	content: url( "frown.tiff" );
+}
+
+.emoticon.annoyed:after {
+	content: url( "slant.tiff" );
+}
+
+.emoticon.razz:after {
+	content: url( "yuck.tiff" );
+}
+
+.emoticon.angry:after {
+	content: url( "angry.tiff" );
+}
+
+.emoticon.cool:after {
+	content: url( "cool.tiff" );
+}
+
+.emoticon.angel:after {
+	content: url( "innocent.tiff" );
+}
+
+.emoticon.anime:after {
+	content: url( "smile.tiff" );
+}
+
+.emoticon.suprised:after, .emoticon.shocked:after {
+	content: url( "gasp.tiff" );
+}
+
+.emoticon.cry:after {
+	content: url( "cry.tiff" );
+}

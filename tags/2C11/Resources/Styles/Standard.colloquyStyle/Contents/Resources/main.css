@@ -1,0 +1,103 @@
+body {
+	margin: 4px 0 5px 0;
+	color: black;
+	background-color: white;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: bottom right;
+	background-image: url( "Backgrounds/colloquy.png" );
+}
+
+.hidden {
+	position: fixed;
+	top: -900px;
+	left: -900px;
+}
+
+.error {
+	color: #aaa;
+}
+
+.error:before {
+	content: "(";
+}
+
+.error:after {
+	content: ")";
+}
+
+.event {
+	color: #aaa;
+	text-align: center;
+	padding: 0 5px 2px 5px;
+}
+
+.envelope {
+	overflow: hidden;
+	padding: 1px 5px 1px 5px;
+	margin-bottom: 3px;
+}
+
+.envelope.ignore {
+	display: none;
+}
+
+.envelope.highlight {
+	background-color: #efefec;
+	background-color: rgba( 0, 0, 0, 0.1 );
+}
+
+.member {
+	font-weight: bold;
+	color: #f90;
+	text-decoration: none !important;
+}
+
+.member:hover {
+	text-decoration: underline !important;
+}
+
+.member.self {
+	color: #a21;
+}
+
+.message .member {
+	color:inherit;
+	font-weight: inherit;
+}
+
+.envelope > .member {
+	margin-right: 0.5ex;
+	white-space: nowrap;
+}
+
+.envelope > .member:after {
+	content: ":";
+}
+
+.action > .member:before {
+	content: "\2022";
+	margin-right: 0.3ex;
+}
+
+.action > .member:after {
+	content: "";
+}
+
+.timestamp {
+	display: block;
+	margin-top: 0;
+	margin-left: 5px;
+	float: right;
+	font-size: 80%;
+	color: #888;
+}
+
+.itunes > * {
+	text-decoration: none !important;
+	color: inherit !important;
+}
+
+.itunes > a:hover {
+	text-decoration: underline !important;
+}
