@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="Colloquy 2.0" />
+	<meta name="formatter" content="libxslt 1.1.0" />
+	<title>%@</title>
+	<script type="text/ecmascript" defer="defer">
+		var scrollToBottomIsNeeded = false;
+		var smoothScroll = false;
+		var scrollBackLimit = 500;
+
+		function prependMessages( html ) {
+			checkIfScrollToBottomIsNeeded();
+
+			bodyNode = document.getElementsByTagName( "body" ).item( 0 );
+			range = document.createRange();
+			range.selectNode( bodyNode );
+			documentFragment = range.createContextualFragment( html );
+			if( bodyNode.children.length ) document.body.insertBefore( documentFragment, bodyNode.children[0] );
+			else bodyNode.appendChild( documentFragment );
+
+			scrollToBottomIfNeeded();
+		}
+
+		function appendMessages( html ) {
+			checkIfScrollToBottomIsNeeded();
+
+			bodyNode = document.getElementsByTagName( "body" ).item( 0 );
+			range = document.createRange();
+			range.selectNode( bodyNode );
+			documentFragment = range.createContextualFragment( html );
+			bodyNode.appendChild( documentFragment );
+
+			scrollToBottomIfNeeded();
+		}
+
+		function appendMessage( html ) {
+			checkIfScrollToBottomIsNeeded();
+			removeConsecutiveInsertPoint();
+
+			bodyNode = document.getElementsByTagName( "body" ).item( 0 );
+			range = document.createRange();
+			range.selectNode( bodyNode );
+			documentFragment = range.createContextualFragment( html );
+			bodyNode.appendChild( documentFragment );
+
+			enforceScrollBackLimit();
+			scrollToBottomIfNeeded();
+		}
+
+		function appendConsecutiveMessage( html ) {
+			checkIfScrollToBottomIsNeeded();
+
+			insert = document.getElementById( "consecutiveInsert" );
+			if( ! insert ) {
+				appendMessage( html );
+				return;
+			}
+
+			range = document.createRange();
+			range.selectNode( insert.parentNode );
+			documentFragment = range.createContextualFragment( html );
+			insert.parentNode.replaceChild( documentFragment, insert );
+
+			enforceScrollBackLimit();
+			scrollToBottomIfNeeded();
+		}
+
+		function removeConsecutiveInsertPoint() {
+			insert = document.getElementById( "consecutiveInsert" );
+			if( insert ) insert.parentNode.removeChild( insert );
+		}
+
+		function scrollBackMessageCount() {
+			bodyNode = document.getElementsByTagName( "body" ).item( 0 );
+			return bodyNode.children.length;
+		}
+
+		function firstMessageIdentifier() {
+			bodyNode = document.getElementsByTagName( "body" ).item( 0 );
+			return bodyNode.children[0].id;
+		}
+
+		function enforceScrollBackLimit() {
+			bodyNode = document.getElementsByTagName( "body" ).item( 0 );
+			if( scrollBackLimit > 0 && bodyNode.children.length > scrollBackLimit )
+				for( i = 0; bodyNode.children.length > scrollBackLimit && i < ( bodyNode.children.length - scrollBackLimit ); i++ )
+					bodyNode.removeChild( bodyNode.children[0] );
+		}
+
+		function locationOfMessage( id ) {
+			element = document.getElementById( id );
+			return element.offsetTop;
+		}
+
+		function locationOfElementByIndex( index ) {
+			bodyNode = document.getElementsByTagName( "body" ).item( 0 );
+			return bodyNode.children[index].offsetTop;
+		}
+
+		function jumpToBottom() {
+			document.body.scrollTop = document.body.offsetHeight;
+		}
+
+		function scrollToBottom() {
+			if( smoothScroll && document.body.scrollTop >= ( document.body.scrollHeight - ( window.innerHeight * 1.3 ) ) ) {
+				document.body.scrollTop += 5;
+				if( document.body.scrollTop < ( document.body.scrollHeight - window.innerHeight ) ) {
+					setTimeout( "scrollToBottom()", 5 );
+				} else jumpToBottom();
+			} else jumpToBottom();
+		}
+
+		function checkIfScrollToBottomIsNeeded() {
+			scrollToBottomIsNeeded = ( document.body.scrollTop >= ( document.body.offsetHeight - ( window.innerHeight * 1.1 ) ) );
+		}
+
+		function scrollToBottomIfNeeded() {
+			if( scrollToBottomIsNeeded )
+				scrollToBottom();
+		}
+
+		function setStylesheet( id, url ) {
+			code = "<style id=\"" + id + "\" type=\"text/css\" media=\"screen,print\">";
+			if( url.length ) code += "@import url( \"" + url + "\" );";
+			code += "</style>";
+			range = document.createRange();
+			head = document.getElementsByTagName( "head" ).item(0);
+			range.selectNode( head );
+			documentFragment = range.createContextualFragment( code );
+			head.removeChild( document.getElementById( id ) );
+			head.appendChild( documentFragment );
+		}
+	</script>
+	<style id="emoticonStyle" type="text/css" media="screen,print">@import url( "%@" );</style>
+	<style id="mainStyle" type="text/css" media="screen,print">@import url( "%@" );</style>
+	<style id="variantStyle" type="text/css" media="screen,print">@import url( "%@" );</style>
+	<base href="%@" />
+</head>
+<body onload="jumpToBottom()">
+%@
+%@
+</body>
+</html>
