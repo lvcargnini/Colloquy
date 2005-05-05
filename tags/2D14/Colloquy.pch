@@ -1,0 +1,9 @@
+#ifdef __OBJC__
+#import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
+#import <AGRegex/AGRegex.h>
+
+#ifdef MAC_OS_X_VERSION_10_4
+#define WebKitVersion146 1
+#endif
+#endif
