@@ -1,4 +1,0 @@
-/* Localized versions of Info.plist keys */
-
-CFBundleGetInfoString = "Colloquy Metadata Importer 1.0; Copyright © 2005, Karl Adam";
-NSHumanReadableCopyright = "Copyright © 2005, Karl Adam";
