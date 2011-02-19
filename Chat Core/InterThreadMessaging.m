@@ -3,12 +3,6 @@
  * Created by toby on Tue Jun 19 2001.
  */
 
-#if (defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE) || (defined(MAC_OS_X_VERSION_MIN_REQUIRED) && MAC_OS_X_VERSION_MIN_REQUIRED >= 1060)
-#define ALWAYS_HAS_SYSTEM_SUPPORT 1
-#else
-#define ALWAYS_HAS_SYSTEM_SUPPORT 0
-#endif
-
 #import "InterThreadMessaging.h"
 
 @interface NSObject (LeopardOnly)
@@ -27,7 +21,7 @@ static BOOL useSystemThreadPerformSelector() {
 	return useSystemVersion;
 }
 
-#if !ALWAYS_HAS_SYSTEM_SUPPORT
+#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
 
 #import <pthread.h>
 
@@ -87,7 +81,7 @@ static void removeMessagePortForThread(NSThread *thread) {
 
 @implementation NSThread (InterThreadMessaging)
 + (void) prepareForInterThreadMessages {
-#if !ALWAYS_HAS_SYSTEM_SUPPORT
+#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
 	if(useSystemThreadPerformSelector())
 		return;
 	[InterThreadManager class]; // Force the class initialization.
@@ -96,7 +90,7 @@ static void removeMessagePortForThread(NSThread *thread) {
 }
 @end
 
-#if !ALWAYS_HAS_SYSTEM_SUPPORT
+#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
 
 @implementation InterThreadManager
 + (void) initialize {
@@ -140,7 +134,7 @@ static void performSelector(SEL selector, id receiver, id object, NSThread *thre
 		return;
 	}
 
-#if !ALWAYS_HAS_SYSTEM_SUPPORT
+#ifndef TARGET_OS_IPHONE
 	InterThreadMessage *msg = (InterThreadMessage *)malloc(sizeof(struct InterThreadMessage));
 	bzero(msg, sizeof(struct InterThreadMessage));
 
