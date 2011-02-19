@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>style</key>
+		<string>body { color: %@ !important; }</string>
+		<key>default</key>
+		<string>#000000</string>
+		<key>description</key>
+		<string>Main text</string>
+		<key>type</key>
+		<string>color</string>
+	</dict>
+	<dict>
+		<key>style</key>
+		<string>body { background-color: %@ !important; }</string>
+		<key>default</key>
+		<string>#ffffff</string>
+		<key>description</key>
+		<string>Background</string>
+		<key>type</key>
+		<string>color</string>
+	</dict>
+	<dict>
+		<key>style</key>
+		<string>body { background-image: url("%@") !important; }</string>
+		<key>folder</key>
+		<string>Backgrounds</string>
+		<key>description</key>
+		<string>Background image</string>
+		<key>type</key>
+		<string>file</string>
+	</dict>
+	<dict>
+		<key>style</key>
+		<array>
+			<string>body { background-repeat: repeat !important; }</string>
+			<string>body { background-repeat: repeat-y !important; }</string>
+			<string>body { background-repeat: repeat-x !important; }</string>
+			<string>body { background-repeat: no-repeat !important; background-position: center !important; }</string>
+			<string>body { background-repeat: no-repeat !important; background-position: top left !important; }</string>
+			<string>body { background-repeat: no-repeat !important; background-position: top right !important; }</string>
+			<string>body { background-repeat: no-repeat !important; background-position: bottom left !important; }</string>
+			<string>body { background-repeat: no-repeat !important; background-position: bottom right !important; }</string>
+		</array>
+		<key>default</key>
+		<integer>0</integer>
+		<key>description</key>
+		<string>Background position</string>
+		<key>type</key>
+		<string>list</string>
+		<key>options</key>
+		<array>
+			<string>Full Tile</string>
+			<string>Tile Down</string>
+			<string>Tile Across</string>
+			<string>Center</string>
+			<string>Top Left</string>
+			<string>Top Right</string>
+			<string>Bottom Left</string>
+			<string>Bottom Right</string>
+		</array>
+	</dict>
+	<dict>
+		<key>style</key>
+		<string>a:link { color: %@; }</string>
+		<key>default</key>
+		<string>#0000aa</string>
+		<key>description</key>
+		<string>Links</string>
+		<key>type</key>
+		<string>color</string>
+	</dict>
+	<dict>
+		<key>style</key>
+		<array>
+			<string>a:link { text-decoration: underline; }</string>
+			<string>a:link { text-decoration: none; }</string>
+		</array>
+		<key>default</key>
+		<integer>0</integer>
+		<key>description</key>
+		<string>Underline links</string>
+		<key>type</key>
+		<string>list</string>
+		<key>options</key>
+		<array>
+			<string>Yes</string>
+			<string>No</string>
+		</array>
+	</dict>
+	<dict>
+		<key>style</key>
+		<array>
+			<string>.reason { display: inline; }</string>
+			<string>.reason { display: none; }</string>
+		</array>
+		<key>default</key>
+		<integer>0</integer>
+		<key>description</key>
+		<string>Display event reasons</string>
+		<key>type</key>
+		<string>list</string>
+		<key>options</key>
+		<array>
+			<string>Yes</string>
+			<string>No</string>
+		</array>
+	</dict>
+	<dict>
+		<key>style</key>
+		<array>
+			<string>.hostmask { display: inline; }</string>
+			<string>.hostmask { display: none; }</string>
+		</array>
+		<key>default</key>
+		<integer>1</integer>
+		<key>description</key>
+		<string>Display hostmasks</string>
+		<key>type</key>
+		<string>list</string>
+		<key>options</key>
+		<array>
+			<string>Yes</string>
+			<string>No</string>
+		</array>
+	</dict>
+	<dict>
+		<key>style</key>
+		<string>.searchHighlight { color: %@ !important; }</string>
+		<key>default</key>
+		<string>rgba( 255, 128, 0, 0.75 )</string>
+		<key>description</key>
+		<string>Search highlight</string>
+		<key>type</key>
+		<string>color</string>
+	</dict>
+</array>
+</plist>

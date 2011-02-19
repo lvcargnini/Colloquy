@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<string>About</string>
+	<key>StringsTable</key>
+	<string>About</string>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>Key</key>
+			<string>CQCurrentVersion</string>
+			<key>DefaultValue</key>
+			<string>1.3.1</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Website</string>
+			<key>Key</key>
+			<string>CQWebsite</string>
+			<key>DefaultValue</key>
+			<string>http://colloquy.mobi</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Support</string>
+			<key>Key</key>
+			<string>CQSupportEmail</string>
+			<key>DefaultValue</key>
+			<string>support@colloquy.mobi</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string> </string>
+			<key>Key</key>
+			<string>CQIRCChannel</string>
+			<key>DefaultValue</key>
+			<string>#colloquy-mobile on Freenode</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Credits</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Kiji Roshi</string>
+			<key>Key</key>
+			<string>CQCreditsDeveloperKiji</string>
+			<key>DefaultValue</key>
+			<string>Programmer</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Zach Drayer</string>
+			<key>Key</key>
+			<string>CQCreditsDeveloperZach</string>
+			<key>DefaultValue</key>
+			<string>Programmer</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Alexander Kempgen</string>
+			<key>Key</key>
+			<string>CQCreditsDeveloperAlexander</string>
+			<key>DefaultValue</key>
+			<string>Programmer</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>August Joki</string>
+			<key>Key</key>
+			<string>CQCreditsDeveloperAugust</string>
+			<key>DefaultValue</key>
+			<string>Programmer</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Jane Lee</string>
+			<key>Key</key>
+			<string>CQCreditsDeveloperJane</string>
+			<key>DefaultValue</key>
+			<string>Programmer</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Aaron Stepanik</string>
+			<key>Key</key>
+			<string>CQCreditsTesterAaron</string>
+			<key>DefaultValue</key>
+			<string>Beta Tester</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Ben Gold</string>
+			<key>Key</key>
+			<string>CQCreditsTesterBen</string>
+			<key>DefaultValue</key>
+			<string>Beta Tester</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Julian</string>
+			<key>Key</key>
+			<string>CQCreditsTesterJulian</string>
+			<key>DefaultValue</key>
+			<string>Beta Tester</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,2 @@
+com_internet_messaging_Service = "Service";
+com_internet_messaging_Service.Description = "The network protocol over which this transcript was recorded";

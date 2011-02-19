@@ -1,0 +1,18 @@
+#import <AvailabilityMacros.h>
+
+#ifndef MAC_OS_X_VERSION_10_5
+#define MAC_OS_X_VERSION_10_5 1050
+#endif
+
+#ifndef MAC_OS_X_VERSION_10_6
+#define MAC_OS_X_VERSION_10_6 1060
+#endif
+
+#ifdef __OBJC__
+
+#import <Cocoa/Cocoa.h>
+#import <Foundation/NSDebug.h>
+
+CF_EXPORT CFRunLoopRef CFRunLoopGetMain(void);
+
+#endif

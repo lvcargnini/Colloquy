@@ -1,0 +1,514 @@
+#import "CQChatInputBar.h"
+
+#import "CQTextCompletionView.h"
+
+#define CompletionsCaptureKeyboardDelay 0.5
+
+#if ENABLE(SECRETS)
+@interface UIKeyboardImpl : UIView
++ (UIKeyboardImpl *) activeInstance;
+- (void) takeTextInputTraitsFromDelegate;
+- (void) takeTextInputTraitsFrom:(id <UITextInputTraits>) object;
+- (void) updateReturnKey:(BOOL) update;
+@end
+
+#pragma mark -
+
+@interface UITextField (UITextFieldPrivate)
+@property (nonatomic) NSRange selectionRange;
+- (BOOL) hasMarkedText;
+@end
+#endif
+
+#pragma mark -
+
+@interface CQChatInputBar (CQChatInputBarPrivate)
+- (void) _moveCaretToOffset:(NSUInteger) offset;
+- (BOOL) _hasMarkedText;
+- (void) _updateTextTraits;
+@end
+
+#pragma mark -
+
+@implementation CQChatInputBar
+- (void) _commonInitialization {
+	CGRect frame = self.bounds;
+
+	_backgroundView = [[UIToolbar alloc] initWithFrame:frame];
+	_backgroundView.userInteractionEnabled = NO;
+	_backgroundView.tintColor = [UIColor lightGrayColor];
+	_backgroundView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+
+	[self addSubview:_backgroundView];
+
+	_inputField = [[UITextField alloc] initWithFrame:CGRectMake(6., 7., frame.size.width - 12., frame.size.height - 14.)];
+	_inputField.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+	_inputField.borderStyle = UITextBorderStyleRoundedRect;
+	_inputField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	_inputField.adjustsFontSizeToFitWidth = YES;
+	_inputField.minimumFontSize = 10.;
+	_inputField.returnKeyType = UIReturnKeySend;
+	_inputField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+	_inputField.enablesReturnKeyAutomatically = YES;
+	_inputField.clearButtonMode = UITextFieldViewModeWhileEditing;
+	_inputField.delegate = self;
+
+	[self addSubview:_inputField];
+
+	_autocomplete = YES;
+
+#if ENABLE(SECRETS)
+	_inputField.autocorrectionType = UITextAutocorrectionTypeDefault;
+	_autocorrect = YES;
+#else
+	_inputField.autocorrectionType = UITextAutocorrectionTypeNo;
+	_autocorrect = NO;
+#endif
+
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideCompletions) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+#pragma mark -
+
+- (id) initWithFrame:(CGRect) frame {
+	if (!(self = [super initWithFrame:frame]))
+		return nil;
+
+	[self _commonInitialization];
+
+	return self;
+}
+
+- (id) initWithCoder:(NSCoder *) coder {
+	if (!(self = [super initWithCoder:coder]))
+		return nil;
+
+	[self _commonInitialization];
+
+	return self;
+}
+
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+
+	_inputField.delegate = nil;
+	_completionView.delegate = nil;
+
+	[_inputField release];
+	[_completionView release];
+	[_completions release];
+	[_backgroundView release];
+
+	[super dealloc];
+}
+
+#pragma mark -
+
+- (BOOL) canBecomeFirstResponder {
+	return [_inputField canBecomeFirstResponder];
+}
+
+- (BOOL) becomeFirstResponder {
+	return [_inputField becomeFirstResponder];
+}
+
+- (BOOL) canResignFirstResponder {
+	return [_inputField canResignFirstResponder];
+}
+
+- (BOOL) resignFirstResponder {
+	return [_inputField resignFirstResponder];
+}
+
+- (BOOL) isFirstResponder {
+	return [_inputField isFirstResponder];
+}
+
+- (BOOL) canPerformAction:(SEL) action withSender:(id) sender {
+	[self hideCompletions];
+	return NO;
+}
+
+- (UITextAutocapitalizationType) autocapitalizationType {
+	return _inputField.autocapitalizationType;
+}
+
+- (void) setAutocapitalizationType:(UITextAutocapitalizationType) autocapitalizationType {
+	_inputField.autocapitalizationType = autocapitalizationType;
+}
+
+@synthesize autocomplete = _autocomplete;
+
+@synthesize spaceCyclesCompletions = _spaceCyclesCompletions;
+
+@synthesize autocorrect = _autocorrect;
+
+#if !ENABLE(SECRETS)
+- (void) setAutocorrect:(BOOL) autocorrect {
+	// Do nothing, autocorrection can't be enabled if we don't use secrets, since it would
+	// appear over our completion popup and fight with the entered text.
+}
+#endif
+
+- (UIColor *) tintColor {
+	return _backgroundView.tintColor;
+}
+
+- (void) setTintColor:(UIColor *) color {
+	if (!color)
+		color = [UIColor lightGrayColor];
+	_inputField.keyboardAppearance = ([color isEqual:[UIColor blackColor]] ? UIKeyboardAppearanceAlert : UIKeyboardAppearanceDefault);
+	_backgroundView.tintColor = color;
+}
+
+#pragma mark -
+
+@synthesize textField = _inputField;
+
+- (BOOL) isShowingCompletions {
+	return (_completionView && !_completionView.hidden);
+}
+
+- (void) captureKeyboardForCompletions {
+	_completionCapturedKeyboard = YES;
+
+	if (self.showingCompletions) _inputField.returnKeyType = UIReturnKeyDefault;
+	else _inputField.returnKeyType = UIReturnKeySend;
+
+	[self _updateTextTraits];
+}
+
+- (void) hideCompletions {
+	_completionCapturedKeyboard = NO;
+
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideCompletions) object:nil];
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showCompletions) object:nil];
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(captureKeyboardForCompletions) object:nil];
+
+	_completionRange = NSMakeRange(NSNotFound, 0);
+
+	id old = _completions;
+	_completions = nil;
+	[old release];
+
+	_completionView.hidden = YES;
+	_completionView.completions = nil;
+
+	_inputField.returnKeyType = UIReturnKeySend;
+
+	[self _updateTextTraits];
+}
+
+- (void) showCompletions {
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideCompletions) object:nil];
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showCompletions) object:nil];
+
+	if ([self _hasMarkedText]) {
+		[self hideCompletions];
+		return;
+	}
+
+	NSString *text = _inputField.text;
+	if (text.length <= _completionRange.location) {
+		[self hideCompletions];
+		return;
+	}
+
+	if (!_completionView) {
+		_completionView = [[CQTextCompletionView alloc] initWithFrame:CGRectMake(0., 0., 480., 46.)];
+		_completionView.delegate = self;
+		_completionView.hidden = YES;
+
+		[self.superview addSubview:_completionView];
+	}
+
+	NSArray *completions = _completions;
+	NSString *prefixText = [text substringToIndex:_completionRange.location];
+	CGSize textSize = [prefixText sizeWithFont:_inputField.font];
+
+	CGRect inputFrame = [self convertRect:_inputField.frame toView:self.superview];
+
+retry:
+	_completionView.completions = completions;
+	[_completionView sizeToFit];
+
+	CGRect frame = _completionView.frame;
+	frame.origin = inputFrame.origin;
+	frame.origin.y -= 31.;
+	frame.origin.x += textSize.width + 1.;
+
+	if ((frame.origin.x + _completionView.bounds.size.width) > CGRectGetMaxX(inputFrame))
+		frame.origin.x -= ((frame.origin.x + _completionView.bounds.size.width) - CGRectGetMaxX(inputFrame));
+
+	if (frame.origin.x < inputFrame.origin.x) {
+		if (completions.count > 1) {
+			completions = [completions subarrayWithRange:NSMakeRange(0, (completions.count - 1))];
+			goto retry;
+		} else {
+			[self hideCompletions];
+			return;
+		}
+	}
+
+	_completionView.frame = frame;
+	_completionView.hidden = NO;
+
+	[_completionView.superview bringSubviewToFront:_completionView];
+}
+
+- (void) showCompletions:(NSArray *) completions forText:(NSString *) text inRange:(NSRange) textRange {
+	_completionRange = textRange;
+
+	id old = _completions;
+	_completions = [completions retain];
+	[old release];
+
+	_inputField.returnKeyType = UIReturnKeySend;
+
+	[self _updateTextTraits];
+
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideCompletions) object:nil];
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(showCompletions) object:nil];
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(captureKeyboardForCompletions) object:nil];
+
+	[self performSelector:@selector(showCompletions) withObject:nil afterDelay:([self isShowingCompletions] ? 0.05 : 0.15)];
+
+	if (_spaceCyclesCompletions)
+		[self performSelector:@selector(captureKeyboardForCompletions) withObject:nil afterDelay:CompletionsCaptureKeyboardDelay];
+}
+
+#pragma mark -
+
+@synthesize delegate;
+
+- (BOOL) textFieldShouldBeginEditing:(UITextField *) textField {
+	if ([delegate respondsToSelector:@selector(chatInputBarShouldBeginEditing:)])
+		return [delegate chatInputBarShouldBeginEditing:self];
+	return YES;
+}
+
+- (void) textFieldDidBeginEditing:(UITextField *) textField {
+	if ([delegate respondsToSelector:@selector(chatInputBarDidBeginEditing:)])
+		[delegate chatInputBarDidBeginEditing:self];
+}
+
+- (BOOL) textFieldShouldEndEditing:(UITextField *) textField {
+	if ([delegate respondsToSelector:@selector(chatInputBarShouldEndEditing:)])
+		return [delegate chatInputBarShouldEndEditing:self];
+	return YES;
+}
+
+- (void) textFieldDidEndEditing:(UITextField *) textField {
+	if ([delegate respondsToSelector:@selector(chatInputBarDidEndEditing:)])
+		[delegate chatInputBarDidEndEditing:self];
+	[self hideCompletions];
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *) textField {
+	if (_completionCapturedKeyboard && self.showingCompletions) {
+		[_completionView retain];
+
+		if (_completionView.selectedCompletion != NSNotFound)
+			[self textCompletionView:_completionView didSelectCompletion:[_completionView.completions objectAtIndex:_completionView.selectedCompletion]];
+		else [self hideCompletions];
+
+		[_completionView release];
+		return YES;
+	}
+
+	if (![delegate respondsToSelector:@selector(chatInputBar:sendText:)])
+		return NO;
+
+	if (!_inputField.text.length)
+		return NO;
+
+	// Perform work on a delay so pending auto-corrections can be committed.
+	[self performSelector:@selector(_sendText) withObject:nil afterDelay:0.];
+
+	return YES;
+}
+
+- (BOOL) textFieldShouldClear:(UITextField *) textField {
+	_disableCompletionUntilNextWord = NO;
+	_completionCapturedKeyboard = NO;
+
+	_inputField.autocorrectionType = (_autocorrect ? UITextAutocorrectionTypeDefault : UITextAutocorrectionTypeNo);
+
+	[self hideCompletions];
+
+	return YES;
+}
+
+- (BOOL) textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange) range replacementString:(NSString *) string {
+	if (_autocapitalizeNextLetter) {
+		_autocapitalizeNextLetter = NO;
+		_inputField.autocapitalizationType = _defaultAutocapitalizationType;
+		[self _updateTextTraits];
+	}
+
+	if (![delegate respondsToSelector:@selector(chatInputBar:shouldAutocorrectWordWithPrefix:)] && ![delegate respondsToSelector:@selector(chatInputBar:completionsForWordWithPrefix:)])
+		return YES;
+
+	if (_spaceCyclesCompletions && _completionCapturedKeyboard && self.showingCompletions && [string isEqualToString:@" "] && !_completionView.closeSelected) {
+		if (_completionView.selectedCompletion != NSNotFound)
+			++_completionView.selectedCompletion;
+		else _completionView.selectedCompletion = 0;
+		return NO;
+	}
+
+	_completionCapturedKeyboard = NO;
+
+	NSString *text = _inputField.text;
+	BOOL replaceManually = NO;
+	if (_spaceCyclesCompletions && self.showingCompletions && _completionView.selectedCompletion != NSNotFound && !range.length && ![string isEqualToString:@" "]) {
+		replaceManually = YES;
+		text = [_inputField.text stringByReplacingCharactersInRange:NSMakeRange(range.location, 0) withString:@" "];
+		++range.location;
+	}
+
+	NSRange wordRange = {0, range.location + string.length};
+	text = [text stringByReplacingCharactersInRange:range withString:string];
+
+	for (NSInteger i = (range.location + string.length - 1); i >= 0; --i) {
+		if ([text characterAtIndex:i] == ' ') {
+			wordRange.location = i + 1;
+			wordRange.length = ((range.location + string.length) - wordRange.location);
+			break;
+		}
+	}
+
+	if (!wordRange.length)
+		_disableCompletionUntilNextWord = NO;
+
+	NSString *word = [text substringWithRange:wordRange];
+	NSArray *completions = nil;
+	if (_autocomplete && !_disableCompletionUntilNextWord && word.length && ![self _hasMarkedText] && [delegate respondsToSelector:@selector(chatInputBar:completionsForWordWithPrefix:inRange:)]) {
+		completions = [delegate chatInputBar:self completionsForWordWithPrefix:word inRange:wordRange];
+		if (completions.count)
+			[self showCompletions:completions forText:text inRange:wordRange];
+		 else [self hideCompletions];
+	} else [self hideCompletions];
+
+	word = [text substringWithRange:wordRange];
+
+	UITextAutocorrectionType newAutocorrectionType = UITextAutocorrectionTypeDefault;
+	if (!_autocorrect || completions.count || ([delegate respondsToSelector:@selector(chatInputBar:shouldAutocorrectWordWithPrefix:)] && ![delegate chatInputBar:self shouldAutocorrectWordWithPrefix:word]))
+		newAutocorrectionType = UITextAutocorrectionTypeNo;
+
+	if (newAutocorrectionType != _inputField.autocorrectionType) {
+		_inputField.autocorrectionType = newAutocorrectionType;
+		[self _updateTextTraits];
+	}
+
+	if (replaceManually) {
+		_inputField.text = text;
+		[self _moveCaretToOffset:(range.location + string.length)];
+		return NO;
+	}
+
+	return YES;
+}
+
+- (void) textFieldEditorDidChangeSelection:(UITextField *) textField {
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideCompletions) object:nil];
+
+	[self performSelector:@selector(hideCompletions) withObject:nil afterDelay:0.5];
+}
+
+#pragma mark -
+
+- (void) textCompletionView:(CQTextCompletionView *) textCompletionView didSelectCompletion:(NSString *) completion {
+	BOOL endsInPunctuation = (completion.length && [[NSCharacterSet punctuationCharacterSet] characterIsMember:[completion characterAtIndex:(completion.length - 1)]]);
+	if (![completion hasSuffix:@" "])
+		completion = [completion stringByAppendingString:@" "];
+
+	NSString *text = _inputField.text;
+	if (text.length >= (NSMaxRange(_completionRange) + 1) && [text characterAtIndex:NSMaxRange(_completionRange)] == ' ')
+		++_completionRange.length;
+
+	_inputField.text = [text stringByReplacingCharactersInRange:_completionRange withString:completion];
+	[self _moveCaretToOffset:(_completionRange.location + completion.length)];
+
+	if (_completionRange.location == 0 && endsInPunctuation && _inputField.autocapitalizationType == UITextAutocapitalizationTypeSentences) {
+		_autocapitalizeNextLetter = YES;
+		_defaultAutocapitalizationType = UITextAutocapitalizationTypeSentences;
+		_inputField.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+		[self _updateTextTraits];
+	}
+
+	[self hideCompletions];
+}
+
+- (void) textCompletionViewDidClose:(CQTextCompletionView *) textCompletionView {
+	NSString *text = _inputField.text;
+	if (text.length < NSMaxRange(_completionRange) || [text characterAtIndex:(NSMaxRange(_completionRange) - 1)] != ' ')
+		_disableCompletionUntilNextWord = YES;
+
+	[self hideCompletions];
+}
+
+#pragma mark -
+
+- (void) _moveCaretToOffset:(NSUInteger) offset {
+#if ENABLE(SECRETS)
+	[_inputField performPrivateSelector:@"setSelectionRange:" withRange:NSMakeRange(offset, 0)];
+#endif
+}
+
+- (BOOL) _hasMarkedText {
+#if ENABLE(SECRETS)
+	return [_inputField performPrivateSelectorReturningBoolean:@"hasMarkedText"];
+#else
+	return NO;
+#endif
+}
+
+- (void) _updateTextTraits {
+#if ENABLE(SECRETS)
+	static Class keyboardClass;
+	if (!keyboardClass) keyboardClass = NSClassFromString(@"UIKeyboardImpl");
+
+	NSAssert(keyboardClass, @"UIKeyboardImpl class does not exist.");
+
+	UIKeyboardImpl *keyboard = [keyboardClass performPrivateSelector:@"activeInstance"];
+	if (!keyboard)
+		return;
+
+	static SEL takeTextInputTraitsFromDelegateSelector;
+	if (!takeTextInputTraitsFromDelegateSelector)
+		takeTextInputTraitsFromDelegateSelector = NSSelectorFromString(@"takeTextInputTraitsFromDelegate");
+
+	static SEL takeTextInputTraitsFromSelector;
+	if (!takeTextInputTraitsFromSelector)
+		takeTextInputTraitsFromSelector = NSSelectorFromString(@"takeTextInputTraitsFrom:");
+
+	NSAssert([keyboard respondsToSelector:takeTextInputTraitsFromDelegateSelector] || [keyboard respondsToSelector:takeTextInputTraitsFromSelector], @"UIKeyboardImpl does not respond to takeTextInputTraitsFromDelegate or takeTextInputTraitsFrom:.");
+	if ([keyboard respondsToSelector:takeTextInputTraitsFromDelegateSelector])
+		[keyboard performSelector:takeTextInputTraitsFromDelegateSelector];
+	else if ([keyboard respondsToSelector:takeTextInputTraitsFromSelector])
+		[keyboard performSelector:takeTextInputTraitsFromSelector withObject:_inputField];
+
+	[keyboard performPrivateSelector:@"updateReturnKey:" withBoolean:YES];
+#endif
+}
+
+- (void) _sendText {
+	// Resign and become first responder to accept any pending auto-correction.
+	[_inputField resignFirstResponder];
+	[_inputField becomeFirstResponder];
+
+	NSString *text = _inputField.text;
+	text = [text stringBySubstitutingEmojiForEmoticons];
+
+	if (![delegate chatInputBar:self sendText:text])
+		return;
+
+	_disableCompletionUntilNextWord = NO;
+	_completionCapturedKeyboard = NO;
+
+	_inputField.text = @"";
+	_inputField.autocorrectionType = (_autocorrect ? UITextAutocorrectionTypeDefault : UITextAutocorrectionTypeNo);
+
+	[self hideCompletions];
+}
+@end

@@ -1,0 +1,432 @@
+body {
+	margin: 0;
+	padding: 0;
+	height: 416px;
+	font-family: Helvetica;
+	-webkit-user-select: none;
+	cursor: default;
+	-webkit-text-size-adjust: none;
+}
+
+body.landscape, body.landscape .colloquy-members {
+	height: 268px;
+}
+
+body.landscape #colloquies, body.landscape .colloquy-panel,
+body.landscape .colloquy-panel-transcript, body.landscape .colloquy-member-list {
+	height: 224px;
+}
+
+body.landscape .colloquy-panel-input {
+	display: none;
+}
+
+#main {
+	overflow: hidden;
+	position: relative;
+}
+
+.header {
+	position: relative;
+	height: 44px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background-color: rgb(131, 152, 180);
+	border-bottom: 1px solid rgb(45, 54, 66);
+	background-image: url(images/header.png);
+	background-repeat: repeat-x;
+	color: white;
+	font-size: 20px;
+	text-shadow: rgba(0, 0, 0, 0.6) 0 -1px 0;
+	font-weight: bold;
+	text-align: center;
+	line-height: 42px;
+}
+
+.header .button {
+	position: absolute;
+	font-weight: bold;
+	line-height: 29px;
+	top: 7px;
+	border-width: 0 5px 0 5px;
+	-webkit-border-image: url(images/button.png) 0 5 0 5;
+	height: 31px;
+	max-height: 31px;
+	min-height: 31px;
+	min-width: 32px;
+	font-size: 12px;
+	text-shadow: rgba(0, 0, 0, 0.6) 0 -1px 0;
+	font-weight: bold;
+	line-height: 30px;
+	color: white;
+	z-index: 100;
+	right: 5px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+#members {
+	opacity: 0;
+	display: none;
+}
+
+#members img {
+	margin-top: 5px;
+	content: url(images/person.png);
+}
+
+#join {
+	line-height: 26px;
+	font-size: 18px;
+	padding-left: 1px;
+}
+
+.back {
+	position: absolute;
+	border-width: 0 5px 0 14px;
+	min-width: 20px;
+	height: 31px;
+	-webkit-border-image: url(images/backButton.png) 0 5 0 14;
+	font-size: 12px;
+	text-shadow: rgba(0, 0, 0, 0.6) 0 -1px 0;
+	font-weight: bold;
+	line-height: 29px;
+	top: 7px;
+	left: 120px;
+	padding: 0 3px 0 2px;
+	color: white;
+	z-index: 100;
+	opacity: 0;
+	display: none;
+}
+
+.header .button.action {
+	-webkit-border-image: url(images/squareBlueButton.png) 0 5 0 5;
+	padding: 0 5px 0 5px;
+}
+
+#colloquy-title, #main-title {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#colloquy-title {
+	display: none;
+	opacity: 0;
+}
+
+#colloquies {
+	position: relative;
+	left: 0;
+	width: 100%;
+	height: 372px;
+	overflow: auto;
+}
+
+.colloquy-panel {
+	position: absolute;
+	top: 44px;
+	width: 100%;
+	height: 372px;
+	background-color: gray;
+	display: none;
+}
+
+body.keyboard-visible #main > .header {
+	top: 216px;
+}
+
+body.keyboard-visible .colloquy-panel {
+	top: 260px;
+	height: 156px;
+}
+
+.colloquy-panel-transcript {
+	background-color: white;
+	height: 335px;
+	overflow: auto;
+}
+
+body.keyboard-visible .colloquy-panel-transcript {
+	height: 119px;
+}
+
+.colloquy-panel-input {
+	white-space: nowrap;
+	height: 38px;
+	background-color: rgb(66%, 66%, 66%);
+	background-image: url(images/gradientHighlight.png);
+	background-repeat: repeat-x;
+	-webkit-background-size: 100%;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid rgb(33%, 33%, 33%);
+	padding: 5px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.colloquy-panel-input form {
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.colloquy-panel-input input {
+	width: 310px;
+	height: 26px;
+	-webkit-border-radius: 13px;
+	padding: 6px;
+	margin: 0;
+	outline: none;
+	font-size: 13px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.colloquy-members {
+	position: absolute;
+	top: 416px;
+	left: 0;
+	width: 100%;
+	height: 416px;
+	background-color: white;
+	display: none;
+	z-index: 200;
+}
+
+.colloquy-members-title {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.colloquy-member-list {
+	height: 372px;
+	overflow: auto;
+	padding: 8px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.colloquy {
+	position: relative;
+	height: 48px;
+	padding: 8px;
+	border-bottom: 1px solid rgb(75%, 75%, 75%);
+}
+
+.colloquy.selected {
+	background-image: url(images/blueGradient.png);
+	background-color: rgb(22, 102, 195);
+	background-repeat: repeat-x;
+	-webkit-background-size: 100% 100%;
+	color: white;
+}
+
+.colloquy.selected .colloquy-preview {
+	color: inherit;
+}
+
+.colloquy:after {
+	position: absolute;
+	top: 24px;
+	right: 8px;
+	content: url(images/rightArrow.png);
+	width: 9px;
+	height: 13px;
+}
+
+.colloquy-title {
+	font-weight: bold;
+	margin-left: 2px;
+	margin-right: 20px;
+	font-size: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.colloquy-preview {
+	margin-left: 2px;
+	margin-right: 20px;
+	color: rgba(0, 0, 0, 0.33);
+	font-size: 13px;
+	min-height: 22px;
+	margin-top: 1px;
+}
+
+.colloquy-preview > div {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.colloquy-preview * {
+	color: inherit !important;
+	background-color: inherit !important;
+}
+
+.colloquy .waiting {
+	float: right;
+	margin-top: 13px;
+	margin-right: 15px;
+	margin-left: 5px;
+	height: 20px;
+	color: white;
+	font-family: Helvetica, Verdana, sans-serif;
+	font-size: 17px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 0px;
+}
+
+.colloquy.selected .waiting {
+	color: rgb(22, 102, 195);
+}
+
+.colloquy.selected .waiting .messages {
+	background-color: white;
+}
+
+.colloquy.selected .waiting .highlights {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.colloquy .waiting .messages {
+	height: 20px;
+	-webkit-border-radius: 10px;
+	background-color: rgb(131, 152, 180);
+	padding: 10px;
+	float: right;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: none;
+}
+
+.colloquy .waiting .highlights {
+	height: 20px;
+	-webkit-border-radius: 10px;
+	background-color: rgb(220, 20, 20);
+	padding: 10px 20px 10px 10px;
+	float: left;
+	margin-right: -15px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: none;
+}
+
+.message-wrapper {
+	padding: 3px 8px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	font-weight: 13px;
+}
+
+.event + .message-wrapper {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.message-wrapper.highlight {
+	background-color: rgb(204, 255, 102);
+	background-image: url(images/gradientHighlight.png);
+	background-repeat: repeat-x;
+}
+
+.message-wrapper.highlight .sender {
+	text-shadow: white 0 1px 3px;
+}
+
+.message-wrapper.action .sender:before {
+	content: "\2022";
+	margin-left: -5px;
+	font-size: 12px;
+}
+
+.message-wrapper.action .sender:after {
+	content: " ";
+}
+
+.sender {
+	display: inline;
+	color: rgb(255, 128, 0);
+}
+
+.sender.self {
+	color: #a21;
+}
+
+.sender:after {
+	content: ": ";
+	font-weight: bold;
+}
+
+.event {
+	font-size: smaller;
+	color: rgb(66%, 66%, 66%);
+	text-align: center;
+	padding: 2px 8px;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	-khtml-line-break: after-white-space;
+	-khtml-nbsp-mode: space;
+}
+
+.message {
+	display: inline;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	-khtml-line-break: after-white-space;
+	-khtml-nbsp-mode: space;
+}
+
+.emoticon samp {
+	font-weight: bold;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.colloquy-member-list .member {
+	margin-bottom: 3px;
+}
+
+.colloquy-member-list .member:before {
+	width: 16px;
+	height: 16px;
+	content: url(/resources/person.png);
+	vertical-align: middle;
+	margin-right: 4px;
+}
+
+.colloquy-member-list .member.server.operator:before {
+	content: url(/resources/admin.png);
+}
+
+.colloquy-member-list .member.operator:before {
+	content: url(/resources/op.png);
+}
+
+.colloquy-member-list .member.administrator:before {
+	content: url(/resources/super-op.png);
+}
+
+.colloquy-member-list .member.founder:before {
+	content: url(/resources/founder.png);
+}
+
+.colloquy-member-list .member.half.operator:before {
+	content: url(/resources/half-op.png);
+}
+
+.colloquy-member-list .member.voice:before {
+	content: url(/resources/voice.png);
+}

@@ -1,0 +1,240 @@
+body {
+	font-family: Lucida Grande, sans-serif;
+	font-size: 11px;
+	padding: 0;
+	margin: 0;
+	background-color: rgb( 235, 235, 235 );
+}
+
+ul, ol {
+	margin: 0;
+	padding: 0;
+}
+
+#input {
+	border-top: 1px solid rgb( 166, 166, 166 );
+	border-left: 1px solid rgb( 166, 166, 166 );
+	background-color: white;
+	padding: 3px;
+	left: 200px;
+	right: 0;
+	bottom: 0;
+	height: 30px;
+	position: absolute;
+	overflow: hidden;
+	outline: 0;
+	word-wrap: break-word;
+}
+
+#panels {
+	top: 0;
+	left: 200px;
+	right: 0;
+	bottom: 37px;
+	position: absolute;
+	border-left: 1px solid rgb( 166, 166, 166 );
+	margin: 0;
+	padding: 0;
+}
+
+#panels iframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	margin: 0;
+}
+
+#sidebar {
+	list-style-type: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 200px;
+	overflow: auto;
+	background-color: rgb( 227, 237, 249 );
+}
+
+.memberList {
+	list-style-type: none;
+	padding-left: 16px;
+}
+
+.listItem {
+	position: relative;
+	height: 35px;
+	width: 100%;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+}
+
+.listItem.member {
+	height: 18px;
+}
+
+.listItem.selected {
+	background-position: bottom;
+	background-image: url( rowHighlight.png );
+	background-repeat: repeat-x;
+}
+
+.listItem .icon {
+	position: absolute;
+	top: 1px;
+	left: 16px;
+	width: 32px;
+	height: 32px;
+	background-repeat: no-repeat;
+}
+
+.listItem .label {
+	position: absolute;
+	top: 4px;
+	left: 53px;
+	font-family: Lucida Grande, Helvetica, Verdana, sans-serif;
+	font-size: 11px;
+	color: black;
+}
+
+.listItem.selected .label {
+	font-weight: bold;
+	color: white;
+	text-shadow: rgba( 0, 0, 0, 0.2 ) 2px 2px 4px;
+}
+
+.listItem.selected .info {
+	font-weight: bold;
+	color: white;
+	text-shadow: rgba( 0, 0, 0, 0.2 ) 2px 2px 4px;
+}
+
+.listItem .info {
+	position: absolute;
+	top: 17px;
+	left: 53px;
+	font-family: Lucida Grande, Helvetica, Verdana, sans-serif;
+	font-size: 9px;
+	color: rgba( 0, 0, 0, 0.8 );
+}
+
+.listItem.chatRoom .icon {
+	background-image: url( /resources/room.png );
+}
+
+.listItem.directChat .icon {
+	background-image: url( /resources/messageUser.png );
+}
+
+.listItem.member .icon {
+	top: 1px;
+	left: 16px;
+	width: 16px;
+	height: 16px;
+	background-image: url( /resources/person.png );
+}
+
+.listItem.member .label {
+	top: 2px;
+	left: 38px;
+}
+
+.listItem.member.server.operator .icon {
+	background-image: url( /resources/admin.png );
+}
+
+.listItem.member.operator .icon {
+	background-image: url( /resources/op.png );
+}
+
+.listItem.member.half.operator .icon {
+	background-image: url( /resources/half-op.png );
+}
+
+.listItem.member.voice .icon {
+	background-image: url( /resources/voice.png );
+}
+
+.listItem .waiting {
+	position: absolute;
+	top: 10px;
+	right: 8px;
+	height: 14px;
+	color: white;
+	font-family: Helvetica, Verdana, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 15px;
+}
+
+.listItem.selected .waiting {
+	color: rgb( 122, 137, 158 );
+}
+
+.listItem .waiting .messages {
+	height: 14px;
+	background-repeat: no-repeat;
+	float: right;
+}
+
+.listItem .waiting .highlights {
+	height: 14px;
+	background-repeat: no-repeat;
+	float: left;
+	margin-right: -2px;
+}
+
+.listItem .waiting .messages.small {
+	width: 17px;
+	background-image: url( messagesNormalSmall.png );
+}
+
+.listItem .waiting .messages.medium {
+	width: 26px;
+	background-image: url( messagesNormalMedium.png );
+}
+
+.listItem .waiting .messages.large {
+	width: 33px;
+	background-image: url( messagesNormalLarge.png );
+}
+
+.listItem.selected .waiting .messages.small {
+	background-image: url( messagesInvertedSmall.png );
+}
+
+.listItem.selected .waiting .messages.medium {
+	background-image: url( messagesInvertedMedium.png );
+}
+
+.listItem.selected .waiting .messages.large {
+	background-image: url( messagesInvertedLarge.png );
+}
+
+.listItem .waiting .highlights.small {
+	width: 20px;
+	background-image: url( highlightsNormalSmall.png );
+}
+
+.listItem .waiting .highlights.medium {
+	width: 25px;
+	background-image: url( highlightsNormalMedium.png );
+}
+
+.listItem .waiting .highlights.large {
+	width: 31px;
+	background-image: url( highlightsNormalLarge.png );
+}
+
+.listItem.selected .waiting .highlights.small {
+	background-image: url( highlightsInvertedSmall.png );
+}
+
+.listItem.selected .waiting .highlights.medium {
+	background-image: url( highlightsInvertedMedium.png );
+}
+
+.listItem.selected .waiting .highlights.large {
+	background-image: url( highlightsInvertedLarge.png );
+}

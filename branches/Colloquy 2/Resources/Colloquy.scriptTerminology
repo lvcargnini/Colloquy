@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Classes</key>
+	<dict>
+		<key>JVBuddy</key>
+		<dict>
+			<key>Attributes</key>
+			<dict>
+				<key>awayMessage</key>
+				<dict>
+					<key>Description</key>
+					<string>Away message for active nickname.</string>
+					<key>Name</key>
+					<string>away message</string>
+				</dict>
+				<key>compositeName</key>
+				<dict>
+					<key>Description</key>
+					<string>The buddy's full name in the user's preferred order.</string>
+					<key>Name</key>
+					<string>name</string>
+				</dict>
+				<key>firstName</key>
+				<dict>
+					<key>Description</key>
+					<string>First name from AddressBook.</string>
+					<key>Name</key>
+					<string>first name</string>
+				</dict>
+				<key>givenNickname</key>
+				<dict>
+					<key>Description</key>
+					<string>Given nickname from AddressBook.</string>
+					<key>Name</key>
+					<string>given nickname</string>
+				</dict>
+				<key>idleTime</key>
+				<dict>
+					<key>Description</key>
+					<string>Current idle time in seconds for the active nickname.</string>
+					<key>Name</key>
+					<string>idle time</string>
+				</dict>
+				<key>lastName</key>
+				<dict>
+					<key>Description</key>
+					<string>Last name from AddressBook.</string>
+					<key>Name</key>
+					<string>last name</string>
+				</dict>
+				<key>preferredName</key>
+				<dict>
+					<key>Description</key>
+					<string>Returns the user's preferred name. Either the active nickname, given nickname, or first and last name.</string>
+					<key>Name</key>
+					<string>preferred name</string>
+				</dict>
+				<key>primaryEmail</key>
+				<dict>
+					<key>Description</key>
+					<string>Primary email address from AddressBook.</string>
+					<key>Name</key>
+					<string>primary email</string>
+				</dict>
+				<key>status</key>
+				<dict>
+					<key>Description</key>
+					<string>The current status of the active nickname.</string>
+					<key>Name</key>
+					<string>status</string>
+				</dict>
+				<key>uniqueIdentifier</key>
+				<dict>
+					<key>Description</key>
+					<string>The unique identifier of the buddy. Same as the associated AddressBook entry.</string>
+					<key>Name</key>
+					<string>id</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>A buddy.</string>
+			<key>Name</key>
+			<string>buddy</string>
+			<key>PluralName</key>
+			<string>buddies</string>
+		</dict>
+		<key>JVChatConsolePanel</key>
+		<dict>
+			<key>Description</key>
+			<string>Direct server console for advanced users.</string>
+			<key>Name</key>
+			<string>console panel</string>
+			<key>PluralName</key>
+			<string>console panels</string>
+		</dict>
+		<key>JVChatMessage</key>
+		<dict>
+			<key>Attributes</key>
+			<dict>
+				<key>body</key>
+				<dict>
+					<key>Description</key>
+					<string>The body of the message.</string>
+					<key>Name</key>
+					<string>body</string>
+				</dict>
+				<key>bodyAsHTML</key>
+				<dict>
+					<key>Description</key>
+					<string>The message with possible HTML formatting.</string>
+					<key>Name</key>
+					<string>HTML</string>
+				</dict>
+				<key>date</key>
+				<dict>
+					<key>Description</key>
+					<string>The date and time this message occurred.</string>
+					<key>Name</key>
+					<string>timestamp</string>
+				</dict>
+				<key>ignoreStatus</key>
+				<dict>
+					<key>Description</key>
+					<string>If the message was ignored with one of the ignore rules.</string>
+					<key>Name</key>
+					<string>ignore status</string>
+				</dict>
+				<key>isAction</key>
+				<dict>
+					<key>Description</key>
+					<string>Does the message have action tense?</string>
+					<key>Name</key>
+					<string>action tense</string>
+				</dict>
+				<key>isHighlighted</key>
+				<dict>
+					<key>Description</key>
+					<string>Was the message highlighted for some reason?</string>
+					<key>Name</key>
+					<string>highlighted</string>
+				</dict>
+				<key>messageNumber</key>
+				<dict>
+					<key>Description</key>
+					<string>The id of this message.</string>
+					<key>Name</key>
+					<string>id</string>
+				</dict>
+				<key>sender</key>
+				<dict>
+					<key>Description</key>
+					<string>The sender of this message</string>
+					<key>Name</key>
+					<string>sender</string>
+				</dict>
+				<key>transcript</key>
+				<dict>
+					<key>Description</key>
+					<string>The transcript (log) this message belongs to.</string>
+					<key>Name</key>
+					<string>transcript</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>A chat message.</string>
+			<key>Name</key>
+			<string>message</string>
+			<key>PluralName</key>
+			<string>messages</string>
+		</dict>
+		<key>JVChatRoomMember</key>
+		<dict>
+			<key>Attributes</key>
+			<dict>
+				<key>buddy</key>
+				<dict>
+					<key>Description</key>
+					<string>The buddy (if any) this member represents.</string>
+					<key>Name</key>
+					<string>buddy</string>
+				</dict>
+				<key>nickname</key>
+				<dict>
+					<key>Description</key>
+					<string>Member's nickname.</string>
+					<key>Name</key>
+					<string>name</string>
+				</dict>
+				<key>room</key>
+				<dict>
+					<key>Description</key>
+					<string>The chat room panel this member is part of.</string>
+					<key>Name</key>
+					<string>chat room panel</string>
+				</dict>
+				<key>uniqueIdentifier</key>
+				<dict>
+					<key>Description</key>
+					<string>The unique identifier of the member. Unique even if member changes nicknames.</string>
+					<key>Name</key>
+					<string>id</string>
+				</dict>
+				<key>user</key>
+				<dict>
+					<key>Description</key>
+					<string>The chat user for this member.</string>
+					<key>Name</key>
+					<string>chat user</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>Chat room member list item represented in the drawer list.</string>
+			<key>Name</key>
+			<string>member</string>
+			<key>PluralName</key>
+			<string>members</string>
+		</dict>
+		<key>JVChatRoomPanel</key>
+		<dict>
+			<key>Description</key>
+			<string>Chat room panel.</string>
+			<key>Name</key>
+			<string>chat room panel</string>
+			<key>PluralName</key>
+			<string>chat room panels</string>
+		</dict>
+		<key>JVChatTranscript</key>
+		<dict>
+			<key>Attributes</key>
+			<dict>
+				<key>automaticallyWritesChangesToFile</key>
+				<dict>
+					<key>Description</key>
+					<string>Save any changes to disk as they occur? Always false when there is no file association.</string>
+					<key>Name</key>
+					<string>auto save</string>
+				</dict>
+				<key>filePath</key>
+				<dict>
+					<key>Description</key>
+					<string>The file (if any) this transcript represents.</string>
+					<key>Name</key>
+					<string>file</string>
+				</dict>
+				<key>uniqueIdentifier</key>
+				<dict>
+					<key>Description</key>
+					<string>The unique identifier of the transcript.</string>
+					<key>Name</key>
+					<string>id</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>A log of a previous conversation.</string>
+			<key>Name</key>
+			<string>transcript</string>
+			<key>PluralName</key>
+			<string>transcripts</string>
+		</dict>
+		<key>JVChatTranscriptPanel</key>
+		<dict>
+			<key>Attributes</key>
+			<dict>
+				<key>transcript</key>
+				<dict>
+					<key>Description</key>
+					<string>The transcript shown in the panel.</string>
+					<key>Name</key>
+					<string>transcript</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>A log panel of some previous conversation.</string>
+			<key>Name</key>
+			<string>transcript panel</string>
+			<key>PluralName</key>
+			<string>transcript panels</string>
+		</dict>
+		<key>JVDirectChatPanel</key>
+		<dict>
+			<key>Attributes</key>
+			<dict>
+				<key>cantSendMessages</key>
+				<dict>
+					<key>Description</key>
+					<string>Can send messages?</string>
+					<key>Name</key>
+					<string>unavailable</string>
+				</dict>
+				<key>currentMessage</key>
+				<dict>
+					<key>Description</key>
+					<string>The current message that is being passed to plugins to process.</string>
+					<key>Name</key>
+					<string>current message</string>
+				</dict>
+				<key>isActive</key>
+				<dict>
+					<key>Description</key>
+					<string>Is the active (visible) view?</string>
+					<key>Name</key>
+					<string>active</string>
+				</dict>
+				<key>newHighlightMessagesWaiting</key>
+				<dict>
+					<key>Description</key>
+					<string>The number of new highlight messages since the panel was last active.</string>
+					<key>Name</key>
+					<string>new highlight messages waiting</string>
+				</dict>
+				<key>newMessagesWaiting</key>
+				<dict>
+					<key>Description</key>
+					<string>The number of new messages since the panel was last active.</string>
+					<key>Name</key>
+					<string>new messages waiting</string>
+				</dict>
+				<key>scriptTypedEncoding</key>
+				<dict>
+					<key>Description</key>
+					<string>The encoding to use when reading and sending messages.</string>
+					<key>Name</key>
+					<string>encoding</string>
+				</dict>
+				<key>target</key>
+				<dict>
+					<key>Description</key>
+					<string>The user or room that we engaged in conversation with.</string>
+					<key>Name</key>
+					<string>target</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>Direct (private) chat panel with another user.</string>
+			<key>Name</key>
+			<string>direct chat panel</string>
+			<key>PluralName</key>
+			<string>direct chat panels</string>
+		</dict>
+		<key>JVSmartTranscriptPanel</key>
+		<dict>
+			<key>Description</key>
+			<string>A smart log panel with conversation filters.</string>
+			<key>Name</key>
+			<string>smart transcript panel</string>
+			<key>PluralName</key>
+			<string>smart transcript panels</string>
+		</dict>
+		<key>ListItem</key>
+		<dict>
+			<key>Attributes</key>
+			<dict>
+				<key>information</key>
+				<dict>
+					<key>Description</key>
+					<string>Subtitle information to show when list has space.</string>
+					<key>Name</key>
+					<string>subtitle</string>
+				</dict>
+				<key>isEnabled</key>
+				<dict>
+					<key>Description</key>
+					<string>Is the list item enabled?</string>
+					<key>Name</key>
+					<string>enabled</string>
+				</dict>
+				<key>parent</key>
+				<dict>
+					<key>Description</key>
+					<string>This list item's parent.</string>
+					<key>Name</key>
+					<string>container</string>
+				</dict>
+				<key>title</key>
+				<dict>
+					<key>Description</key>
+					<string>Title to show in the list.</string>
+					<key>Name</key>
+					<string>name</string>
+				</dict>
+				<key>toolTip</key>
+				<dict>
+					<key>Description</key>
+					<string>The tooltip for the listem item.</string>
+					<key>Name</key>
+					<string>tooltip</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>Generic chat list item that all drawer items inherit from (e.g. members, etc.).</string>
+			<key>Name</key>
+			<string>list item</string>
+			<key>PluralName</key>
+			<string>list items</string>
+		</dict>
+		<key>NSApplication</key>
+		<dict>
+			<key>Description</key>
+			<string>The Colloquy application.</string>
+			<key>Name</key>
+			<string>application</string>
+			<key>PluralName</key>
+			<string>applications</string>
+		</dict>
+		<key>NSWindow</key>
+		<dict>
+			<key>Attributes</key>
+			<dict>
+				<key>activeChatViewController</key>
+				<dict>
+					<key>Description</key>
+					<string>Current visible panel for this chat window.</string>
+					<key>Name</key>
+					<string>active panel</string>
+				</dict>
+				<key>selectedListItem</key>
+				<dict>
+					<key>Description</key>
+					<string>Current selection in the drawer list.</string>
+					<key>Name</key>
+					<string>selected list item</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>A window that can contain panels.</string>
+			<key>Name</key>
+			<string>window</string>
+			<key>PluralName</key>
+			<string>windows</string>
+		</dict>
+		<key>Panel</key>
+		<dict>
+			<key>Attributes</key>
+			<dict>
+				<key>connection</key>
+				<dict>
+					<key>Description</key>
+					<string>Connection this view uses.</string>
+					<key>Name</key>
+					<string>connection</string>
+				</dict>
+				<key>identifier</key>
+				<dict>
+					<key>Description</key>
+					<string>Concise description of the chat view and what it represents.</string>
+					<key>Name</key>
+					<string>description</string>
+				</dict>
+				<key>uniqueIdentifier</key>
+				<dict>
+					<key>Description</key>
+					<string>The unique identifier of the chat view controller.</string>
+					<key>Name</key>
+					<string>id</string>
+				</dict>
+				<key>window</key>
+				<dict>
+					<key>Description</key>
+					<string>Parent window.</string>
+					<key>Name</key>
+					<string>window</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>Generic window panel that all panels inherit from (e.g. direct chat panel, chat room panel, etc.)</string>
+			<key>Name</key>
+			<string>panel</string>
+			<key>PluralName</key>
+			<string>panels</string>
+		</dict>
+	</dict>
+	<key>Commands</key>
+	<dict>
+		<key>AddEventMessage</key>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>attributes</key>
+				<dict>
+					<key>Description</key>
+					<string>Custom information to be stored with this event message. Can be used by chat styles and is saved in transcripts.</string>
+					<key>Name</key>
+					<string>and attributes</string>
+				</dict>
+				<key>name</key>
+				<dict>
+					<key>Description</key>
+					<string>A name for this type of event message. This is not visible to the user, and should be fairly unique. Defaults to a name based on the calling script.</string>
+					<key>Name</key>
+					<string>with name</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>Add an event message to a chat room panel or direct chat panel. This will add a line to the display that is only visible to the local user. Defaults to the active panel of the front window if no other tell block specifies the target.</string>
+			<key>Name</key>
+			<string>add event message</string>
+			<key>UnnamedArgument</key>
+			<dict>
+				<key>Description</key>
+				<string>Message to add (visible to the user). (Plain text with HTML formatting. Must entity encode HTML special characters.)</string>
+			</dict>
+		</dict>
+		<key>DisplayChatRoomBrowser</key>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>connection</key>
+				<dict>
+					<key>Description</key>
+					<string>The connection to select. No selection by default.</string>
+					<key>Name</key>
+					<string>for</string>
+				</dict>
+				<key>expanded</key>
+				<dict>
+					<key>Description</key>
+					<string>Should the browser be expanded? Default is no. The room list will be refreshed if the browser is expanded.</string>
+					<key>Name</key>
+					<string>expanded</string>
+				</dict>
+				<key>filter</key>
+				<dict>
+					<key>Description</key>
+					<string>A search filter to use. No filter by default.</string>
+					<key>Name</key>
+					<string>with filter</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>Displays a new chat room browser window. Users can select a room from an expanded browser, or type a room in manually.</string>
+			<key>Name</key>
+			<string>display chat room browser</string>
+		</dict>
+		<key>DisplayDirectChatPanel</key>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>connection</key>
+				<dict>
+					<key>Description</key>
+					<string>Only required if the user is a string. The connection where to find the user by nickname.</string>
+					<key>Name</key>
+					<string>on</string>
+				</dict>
+				<key>target</key>
+				<dict>
+					<key>Description</key>
+					<string>The member or chat user. You may also pass a string nickname if you also provide the connection.</string>
+					<key>Name</key>
+					<string>for</string>
+				</dict>
+			</dict>
+			<key>Description</key>
+			<string>Open a direct chat panel to chat with another user.  Focuses an existing panel or makes a new panel.</string>
+			<key>Name</key>
+			<string>display direct chat panel</string>
+		</dict>
+		<key>newConnection</key>
+		<dict>
+			<key>Description</key>
+			<string>Prompts to make a new connection.</string>
+			<key>Name</key>
+			<string>display new connection dialog</string>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Classes and commands for Colloquy high-level scripting.</string>
+	<key>Enumerations</key>
+	<dict>
+		<key>BuddyStatus</key>
+		<dict>
+			<key>Available</key>
+			<dict>
+				<key>Name</key>
+				<string>available</string>
+			</dict>
+			<key>Away</key>
+			<dict>
+				<key>Name</key>
+				<string>away</string>
+			</dict>
+			<key>Idle</key>
+			<dict>
+				<key>Name</key>
+				<string>idle</string>
+			</dict>
+			<key>Offline</key>
+			<dict>
+				<key>Name</key>
+				<string>offline</string>
+			</dict>
+		</dict>
+		<key>IgnoreStatus</key>
+		<dict>
+			<key>MessageIgnored</key>
+			<dict>
+				<key>Name</key>
+				<string>message ignored</string>
+			</dict>
+			<key>NotIgnored</key>
+			<dict>
+				<key>Name</key>
+				<string>not ignored</string>
+			</dict>
+			<key>UserIgnored</key>
+			<dict>
+				<key>Name</key>
+				<string>user ignored</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>Name</key>
+	<string>Colloquy Suite</string>
+</dict>
+</plist>

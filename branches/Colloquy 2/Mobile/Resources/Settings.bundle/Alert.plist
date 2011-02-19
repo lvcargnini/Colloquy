@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Highlight</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Sound</string>
+			<key>Key</key>
+			<string>CQSoundOnHighlight</string>
+			<key>Values</key>
+			<array>
+				<string>None</string>
+				<string>Beep 1</string>
+				<string>Beep 2</string>
+				<string>Bell 1</string>
+				<string>Bell 2</string>
+				<string>Clap</string>
+				<string>Cymbal</string>
+				<string>DJ Scratch</string>
+				<string>Electronic Signal</string>
+				<string>Explosion</string>
+				<string>Kick</string>
+				<string>Laser</string>
+				<string>Pop</string>
+				<string>Rattle</string>
+				<string>Sonar Beep</string>
+				<string>Stoof</string>
+				<string>Switch</string>
+				<string>Whip</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>None</string>
+				<string>Beep 1</string>
+				<string>Beep 2</string>
+				<string>Bell 1</string>
+				<string>Bell 2</string>
+				<string>Clap</string>
+				<string>Cymbal</string>
+				<string>DJ Scratch</string>
+				<string>Electronic Signal</string>
+				<string>Explosion</string>
+				<string>Kick</string>
+				<string>Laser</string>
+				<string>Pop</string>
+				<string>Rattle</string>
+				<string>Sonar Beep</string>
+				<string>Stoof</string>
+				<string>Switch</string>
+				<string>Whip</string>
+			</array>
+			<key>DefaultValue</key>
+			<string>Beep 1</string>
+		</dict>
+		<dict>
+			<key>OnlyDisplayOnInterfaceIdiom</key>
+			<string>Phone</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Vibrate</string>
+			<key>Key</key>
+			<string>CQVibrateOnHighlight</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Multitasking Alert</string>
+			<key>Key</key>
+			<string>CQShowLocalNotificationOnHighlight</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Private Message</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Sound</string>
+			<key>Key</key>
+			<string>CQSoundOnPrivateMessage</string>
+			<key>Values</key>
+			<array>
+				<string>None</string>
+				<string>Beep 1</string>
+				<string>Beep 2</string>
+				<string>Bell 1</string>
+				<string>Bell 2</string>
+				<string>Clap</string>
+				<string>Cymbal</string>
+				<string>DJ Scratch</string>
+				<string>Electronic Signal</string>
+				<string>Explosion</string>
+				<string>Kick</string>
+				<string>Laser</string>
+				<string>Pop</string>
+				<string>Rattle</string>
+				<string>Sonar Beep</string>
+				<string>Stoof</string>
+				<string>Switch</string>
+				<string>Whip</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>None</string>
+				<string>Beep 1</string>
+				<string>Beep 2</string>
+				<string>Bell 1</string>
+				<string>Bell 2</string>
+				<string>Clap</string>
+				<string>Cymbal</string>
+				<string>DJ Scratch</string>
+				<string>Electronic Signal</string>
+				<string>Explosion</string>
+				<string>Kick</string>
+				<string>Laser</string>
+				<string>Pop</string>
+				<string>Rattle</string>
+				<string>Sonar Beep</string>
+				<string>Stoof</string>
+				<string>Switch</string>
+				<string>Whip</string>
+			</array>
+			<key>DefaultValue</key>
+			<string>Stoof</string>
+		</dict>
+		<dict>
+			<key>OnlyDisplayOnInterfaceIdiom</key>
+			<string>Phone</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Vibrate</string>
+			<key>Key</key>
+			<string>CQVibrateOnPrivateMessage</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Multitasking Alert</string>
+			<key>Key</key>
+			<string>CQShowLocalNotificationOnPrivateMessage</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Only First Message</string>
+			<key>Key</key>
+			<string>CQPrivateMessageAlertTimeout</string>
+			<key>DefaultValue</key>
+			<false/>
+			<key>TrueValue</key>
+			<integer>300</integer>
+			<key>FalseValue</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Multitasking</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Time Remaining</string>
+			<key>Key</key>
+			<string>CQBackgroundTimeRemainingAlert</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Disconnected</string>
+			<key>Key</key>
+			<string>CQShowDisconnectedInBackgroundAlert</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+	</array>
+</dict>
+</plist>

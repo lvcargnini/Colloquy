@@ -1,0 +1,311 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A61C80407E05F7200C326B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A61C80307E05F7200C326B4 /* Localizable.strings */; };
+		1C4FD32A07C6B9F5000EA451 /* FScript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4FD32907C6B9F5000EA451 /* FScript.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1C4FD36807C6BC25000EA451 /* JVFScriptPluginLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FD36607C6BC25000EA451 /* JVFScriptPluginLoader.m */; };
+		1C4FD3CF07C6BF1B000EA451 /* JVFScriptConsolePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4FD3CD07C6BF1B000EA451 /* JVFScriptConsolePanel.m */; };
+		1C919D9E07C6DC2800079B67 /* console.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C919D9D07C6DC2800079B67 /* console.png */; };
+		1C91A7A407C7983900079B67 /* JVFScriptChatPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C91A7A207C7983900079B67 /* JVFScriptChatPlugin.m */; };
+		1CE3FB5507C7DFD50049A366 /* F-ScriptConsole.nib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE3FB5407C7DFD50049A366 /* F-ScriptConsole.nib */; };
+		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		0A61C7FF07E05F6000C326B4 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1C415F750B35144900239EB3 /* Template.fscript */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = text; name = Template.fscript; path = "../SDK/F-Script/Template.fscript"; sourceTree = SOURCE_ROOT; tabWidth = 4; usesTabs = 1; };
+		1C4FD32907C6B9F5000EA451 /* FScript.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FScript.framework; path = /Library/Frameworks/FScript.framework; sourceTree = "<absolute>"; };
+		1C4FD36507C6BC25000EA451 /* JVFScriptPluginLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFScriptPluginLoader.h; sourceTree = "<group>"; };
+		1C4FD36607C6BC25000EA451 /* JVFScriptPluginLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFScriptPluginLoader.m; sourceTree = "<group>"; };
+		1C4FD3CC07C6BF1B000EA451 /* JVFScriptConsolePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFScriptConsolePanel.h; sourceTree = "<group>"; };
+		1C4FD3CD07C6BF1B000EA451 /* JVFScriptConsolePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFScriptConsolePanel.m; sourceTree = "<group>"; };
+		1C919D9D07C6DC2800079B67 /* console.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = console.png; sourceTree = "<group>"; };
+		1C91A7A107C7983900079B67 /* JVFScriptChatPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFScriptChatPlugin.h; sourceTree = "<group>"; };
+		1C91A7A207C7983900079B67 /* JVFScriptChatPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFScriptChatPlugin.m; sourceTree = "<group>"; };
+		1C9AE943086A59F5008ED7AD /* Common Settings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Common Settings.xcconfig"; path = "../../Settings/Common Settings.xcconfig"; sourceTree = "<group>"; };
+		1CE3FB5407C7DFD50049A366 /* F-ScriptConsole.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = "F-ScriptConsole.nib"; sourceTree = "<group>"; };
+		8D5B49B6048680CD000E48DA /* F-Script Support.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "F-Script Support.plugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1F6107B0957E488001B65CD /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/Localizable.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D5B49B3048680CD000E48DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */,
+				1C4FD32A07C6B9F5000EA451 /* FScript.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* FScript Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				1C415F750B35144900239EB3 /* Template.fscript */,
+				08FB77AFFE84173DC02AAC07 /* Classes */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				1C9AE940086A59CF008ED7AD /* Configurations */,
+				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
+			);
+			name = "FScript Plugin";
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
+				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
+			);
+			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A61C80307E05F7200C326B4 /* Localizable.strings */,
+				1C919D9D07C6DC2800079B67 /* console.png */,
+				1CE3FB5407C7DFD50049A366 /* F-ScriptConsole.nib */,
+				8D5B49B7048680CD000E48DA /* Info.plist */,
+			);
+			indentWidth = 4;
+			name = Resources;
+			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 1;
+		};
+		08FB77AFFE84173DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1C91A7A207C7983900079B67 /* JVFScriptChatPlugin.m */,
+				1C91A7A107C7983900079B67 /* JVFScriptChatPlugin.h */,
+				1C4FD3CD07C6BF1B000EA451 /* JVFScriptConsolePanel.m */,
+				1C4FD3CC07C6BF1B000EA451 /* JVFScriptConsolePanel.h */,
+				1C4FD36607C6BC25000EA451 /* JVFScriptPluginLoader.m */,
+				1C4FD36507C6BC25000EA451 /* JVFScriptPluginLoader.h */,
+			);
+			indentWidth = 4;
+			name = Classes;
+			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 1;
+		};
+		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
+				1C4FD32907C6B9F5000EA451 /* FScript.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				089C1672FE841209C02AAC07 /* Foundation.framework */,
+				089C167FFE841241C02AAC07 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB8FE9D52D311CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D5B49B6048680CD000E48DA /* F-Script Support.plugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C9AE940086A59CF008ED7AD /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				1C9AE943086A59F5008ED7AD /* Common Settings.xcconfig */,
+			);
+			indentWidth = 4;
+			name = Configurations;
+			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 1;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D5B49AC048680CD000E48DA /* F-Script Support Plugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C7F306B0855489300D41FB0 /* Build configuration list for PBXNativeTarget "F-Script Support Plugin" */;
+			buildPhases = (
+				8D5B49B1048680CD000E48DA /* Sources */,
+				8D5B49B3048680CD000E48DA /* Frameworks */,
+				8D5B49AF048680CD000E48DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "F-Script Support Plugin";
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "FScript Plugin";
+			productReference = 8D5B49B6048680CD000E48DA /* F-Script Support.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1C7F306F0855489300D41FB0 /* Build configuration list for PBXProject "F-Script Support" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				zh_TW,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* FScript Plugin */;
+			projectDirPath = "";
+			projectRoot = ../..;
+			targets = (
+				8D5B49AC048680CD000E48DA /* F-Script Support Plugin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D5B49AF048680CD000E48DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C919D9E07C6DC2800079B67 /* console.png in Resources */,
+				1CE3FB5507C7DFD50049A366 /* F-ScriptConsole.nib in Resources */,
+				0A61C80407E05F7200C326B4 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D5B49B1048680CD000E48DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C4FD36807C6BC25000EA451 /* JVFScriptPluginLoader.m in Sources */,
+				1C4FD3CF07C6BF1B000EA451 /* JVFScriptConsolePanel.m in Sources */,
+				1C91A7A407C7983900079B67 /* JVFScriptChatPlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0A61C80307E05F7200C326B4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A61C7FF07E05F6000C326B4 /* English */,
+				A1F6107B0957E488001B65CD /* zh_TW */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1C7F306C0855489300D41FB0 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREFIX_HEADER = ../../Basic.pch;
+				HEADER_SEARCH_PATHS = (
+					../../Additions,
+					"\"../../Chat Core\"",
+					../../Controllers,
+					../../Models,
+					../../Panels,
+				);
+				INFOPLIST_FILE = Info.plist;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = "F-Script Support";
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Development;
+		};
+		1C7F306E0855489300D41FB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREFIX_HEADER = ../../Basic.pch;
+				HEADER_SEARCH_PATHS = (
+					../../Additions,
+					"\"../../Chat Core\"",
+					../../Controllers,
+					../../Models,
+					../../Panels,
+				);
+				INFOPLIST_FILE = Info.plist;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = "F-Script Support";
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Release;
+		};
+		1C7F30700855489300D41FB0 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C9AE943086A59F5008ED7AD /* Common Settings.xcconfig */;
+			buildSettings = {
+				GCC_OPTIMIZATION_LEVEL = 0;
+				SYMROOT = ../../build;
+			};
+			name = Development;
+		};
+		1C7F30720855489300D41FB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C9AE943086A59F5008ED7AD /* Common Settings.xcconfig */;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = ../../build;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C7F306B0855489300D41FB0 /* Build configuration list for PBXNativeTarget "F-Script Support Plugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C7F306C0855489300D41FB0 /* Development */,
+				1C7F306E0855489300D41FB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+		1C7F306F0855489300D41FB0 /* Build configuration list for PBXProject "F-Script Support" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C7F30700855489300D41FB0 /* Development */,
+				1C7F30720855489300D41FB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

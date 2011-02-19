@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>JVAllowAnalytics</key>
+	<false/>
+	<key>JVAskedToAllowAnalytics</key>
+	<false/>
+	<key>JVWarnOnLargeMessages</key>
+	<true/>
+	<key>JVSendDoubleSlashes</key>
+	<false/>
+	<key>JVURLOpensInBackground</key>
+	<false/>
+	<key>JVChatWindowInterface</key>
+	<integer>2</integer>
+	<key>JVChatTranscriptFolder</key>
+	<string>~/Documents/Colloquy Transcripts</string>
+	<key>JVChatTranscriptFolderOrganization</key>
+	<integer>1</integer>
+	<key>JVChatTranscriptSessionHandling</key>
+	<integer>2</integer>
+	<key>JVChatScrollbackLimit</key>
+	<integer>300</integer>
+	<key>JVAutoAcceptFilesFrom</key>
+	<integer>1</integer>
+	<key>JVChatSelfNameStyle</key>
+	<integer>0</integer>
+	<key>JVChatBuddyNameStyle</key>
+	<integer>0</integer>
+	<key>JVChatEncoding</key>
+	<integer>4</integer>
+	<key>MVChatHighlightNames</key>
+	<array/>
+	<key>MVChatBookmarks</key>
+	<array/>
+	<key>JVChatInputAutoResizes</key>
+	<true/>
+	<key>JVEnableAutomaticSoftwareUpdateCheck</key>
+	<true/>
+	<key>JVChatSpellChecking</key>
+	<true/>
+	<key>JVChatMaximumHistory</key>
+	<integer>15</integer>
+	<key>JVFileTransferPortRange</key>
+	<string>{1024, 24}</string>
+	<key>JVAutoOpenTransferPorts</key>
+	<true/>
+	<key>JVAskForTransferSaveLocation</key>
+	<true/>
+	<key>JVChatBuddyListShowIcons</key>
+	<true/>
+	<key>JVChatBuddyListShowFullNames</key>
+	<true/>
+	<key>JVChatBuddyListShowNicknameAndServer</key>
+	<true/>
+	<key>JVChatBuddyListShowOfflineBuddies</key>
+	<true/>
+	<key>JVSortRoomMembersByStatus</key>
+	<true/>
+	<key>JVShowConnectionsWindowOnLaunch</key>
+	<true/>
+	<key>JVChatViewOrganizationType</key>
+	<integer>0</integer>
+	<key>MVChatSendOnReturn</key>
+	<true/>
+	<key>MVChatActionOnReturn</key>
+	<false/>
+	<key>MVChatSendOnEnter</key>
+	<true/>
+	<key>MVChatActionOnEnter</key>
+	<false/>
+	<key>MVChatNaturalActions</key>
+	<false/>
+	<key>JVIdleTime</key>
+	<integer>30</integer>
+	<key>JVChatServers</key>
+	<array>
+		<string>irc.abjects.net</string>
+		<string>irc.allnetwork.org</string>
+		<string>irc.dal.net</string>
+		<string>irc.darksin.net</string>
+		<string>irc.efnet.net</string>
+		<string>irc.esper.net</string>
+		<string>irc.foonetic.net</string>
+		<string>irc.freenode.net</string>
+		<string>irc.galaxynet.org</string>
+		<string>irc.gamesurge.net</string>
+		<string>irc.icq.com</string>
+		<string>irc.za.ircnet.net</string>
+		<string>irc.us.ircnet.net</string>
+		<string>irc.fr.ircnet.net</string>
+		<string>irc.irchighway.net</string>
+		<string>irc.link-net.org</string>
+		<string>irc.macnn.com</string>
+		<string>irc.macgeneration.com</string>
+		<string>irc.oftc.net</string>
+		<string>irc.ogamenet.net</string>
+		<string>irc.quakenet.org</string>
+		<string>uk.quakenet.org</string>
+		<string>irc.rizon.net</string>
+		<string>irc.skyrock.com</string>
+		<string>irc.synirc.net</string>
+		<string>irc.swiftirc.net</string>
+		<string>eu.undernet.org</string>
+		<string>us.undernet.org</string>
+		<string>chat1.ustream.tv</string>
+		<string>irc.webchat.org</string>
+		<string>irc.wyldryde.org</string>
+	</array>
+	<key>JVNotificationSettings JVChatAdditionalMessages</key>
+	<dict>
+		<key>bounceIcon</key>
+		<true/>
+		<key>playSound</key>
+		<false/>
+		<key>soundPath</key>
+		<string>Whip.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatBuddyOffline</key>
+	<dict>
+		<key>playSound</key>
+		<false/>
+		<key>showBubble</key>
+		<true/>
+	</dict>
+	<key>JVNotificationSettings JVChatBuddyOnline</key>
+	<dict>
+		<key>playSound</key>
+		<false/>
+		<key>showBubble</key>
+		<true/>
+	</dict>
+	<key>JVNotificationSettings JVNickNameIdentifiedWithServer</key>
+	<dict>
+		<key>playSound</key>
+		<false/>
+		<key>showBubble</key>
+		<true/>
+	</dict>
+	<key>JVNotificationSettings JVNewMemosFromServer</key>
+	<dict>
+		<key>playSound</key>
+		<false/>
+		<key>showBubble</key>
+		<true/>
+	</dict>
+	<key>JVNotificationSettings JVChatFirstMessage</key>
+	<dict>
+		<key>bounceIcon</key>
+		<true/>
+		<key>showBubble</key>
+		<true/>
+		<key>showBubbleOnlyIfBackground</key>
+		<true/>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>Stoof.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatUnhandledNoticeMessage</key>
+	<dict>
+		<key>showBubble</key>
+		<true/>
+		<key>keepBubbleOnScreen</key>
+		<true/>
+	</dict>
+	<key>JVNotificationSettings JVChatMemberDemoted</key>
+	<dict>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>Electronic Signal.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatMemberDevoiced</key>
+	<dict>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>Rattle.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatMemberJoinedRoom</key>
+	<dict>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>/System/Library/Sounds/Pop.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatMemberKicked</key>
+	<dict>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>Explosion.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatMemberLeftRoom</key>
+	<dict>
+		<key>bounceIcon</key>
+		<false/>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>Whip.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatMemberPromotedOperator</key>
+	<dict>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>DJ Scratch.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatMemberVoiced</key>
+	<dict>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>Switch.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatBeeped</key>
+	<dict>
+		<key>bounceIcon</key>
+		<true/>
+		<key>bounceIconUntilFront</key>
+		<true/>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>Bell 1.aiff</string>
+		<key>showBubble</key>
+		<true/>
+		<key>showBubbleOnlyIfBackground</key>
+		<true/>
+	</dict>
+	<key>JVNotificationSettings JVChatUserBricked</key>
+	<dict>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>Clap.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatMentioned</key>
+	<dict>
+		<key>bounceIcon</key>
+		<true/>
+		<key>bounceIconUntilFront</key>
+		<true/>
+		<key>playSound</key>
+		<true/>
+		<key>soundPath</key>
+		<string>/System/Library/Sounds/Morse.aiff</string>
+		<key>showBubble</key>
+		<true/>
+		<key>showBubbleOnlyIfBackground</key>
+		<true/>
+	</dict>
+	<key>JVNotificationSettings JVChatRoomInvite</key>
+	<dict>
+		<key>playSound</key>
+		<true/>
+		<key>showBubble</key>
+		<true/>
+		<key>soundPath</key>
+		<string>Beep 1.aiff</string>
+	</dict>
+	<key>JVNotificationSettings JVChatError - 2</key>
+	<dict>
+		<key>showBubble</key>
+		<true/>
+		<key>soundPath</key>
+		<string>/System/Library/Sounds/Basso.aiff</string>
+	</dict>
+	<key>JVOpenSafeFiles</key>
+	<true/>
+	<key>JVRemoveTransferredItems</key>
+	<integer>1</integer>
+	<key>JVChatDefaultStyle</key>
+	<string>cc.javelin.colloquy.style.standard</string>
+	<key>JVChatDefaultEmoticons cc.javelin.colloquy.style.bland</key>
+	<string></string>
+	<key>JVChatDefaultEmoticons cc.javelin.colloquy.style.bubbles</key>
+	<string>cc.javelin.colloquy.emoticons.ichat</string>
+	<key>JVChatDefaultEmoticons cc.javelin.colloquy.style.novel</key>
+	<string></string>
+	<key>JVChatDefaultEmoticons cc.javelin.colloquy.style.standard</key>
+	<string>cc.javelin.colloquy.emoticons.standard</string>
+	<key>cc.javelin.colloquy.style.blandWebKitDefaultFixedFontSize</key>
+	<integer>9</integer>
+	<key>cc.javelin.colloquy.style.blandWebKitDefaultFontSize</key>
+	<integer>9</integer>
+	<key>cc.javelin.colloquy.style.blandWebKitFixedFont</key>
+	<string>Monaco</string>
+	<key>cc.javelin.colloquy.style.blandWebKitMinimumFontSize</key>
+	<integer>9</integer>
+	<key>cc.javelin.colloquy.style.blandWebKitSansSerifFont</key>
+	<string>Monaco</string>
+	<key>cc.javelin.colloquy.style.blandWebKitSerifFont</key>
+	<string>Monaco</string>
+	<key>cc.javelin.colloquy.style.blandWebKitStandardFont</key>
+	<string>Monaco</string>
+	<key>cc.javelin.colloquy.style.bubblesWebKitDefaultFontSize</key>
+	<integer>11</integer>
+	<key>cc.javelin.colloquy.style.bubblesWebKitFixedFont</key>
+	<string>Helvetica</string>
+	<key>cc.javelin.colloquy.style.bubblesWebKitMinimumFontSize</key>
+	<integer>9</integer>
+	<key>cc.javelin.colloquy.style.bubblesWebKitSansSerifFont</key>
+	<string>Helvetica</string>
+	<key>cc.javelin.colloquy.style.bubblesWebKitSerifFont</key>
+	<string>Helvetica</string>
+	<key>cc.javelin.colloquy.style.bubblesWebKitStandardFont</key>
+	<string>Helvetica</string>
+	<key>cc.javelin.colloquy.style.novelWebKitDefaultFontSize</key>
+	<integer>14</integer>
+	<key>cc.javelin.colloquy.style.novelWebKitFixedFont</key>
+	<string>Times</string>
+	<key>cc.javelin.colloquy.style.novelWebKitMinimumFontSize</key>
+	<integer>9</integer>
+	<key>cc.javelin.colloquy.style.novelWebKitSansSerifFont</key>
+	<string>Times</string>
+	<key>cc.javelin.colloquy.style.novelWebKitSerifFont</key>
+	<string>Times</string>
+	<key>cc.javelin.colloquy.style.novelWebKitStandardFont</key>
+	<string>Times</string>
+	<key>cc.javelin.colloquy.style.standardWebKitDefaultFontSize</key>
+	<integer>11</integer>
+	<key>cc.javelin.colloquy.style.standardWebKitFixedFont</key>
+	<string>Lucida Grande</string>
+	<key>cc.javelin.colloquy.style.standardWebKitMinimumFontSize</key>
+	<integer>9</integer>
+	<key>cc.javelin.colloquy.style.standardWebKitSansSerifFont</key>
+	<string>Lucida Grande</string>
+	<key>cc.javelin.colloquy.style.standardWebKitSerifFont</key>
+	<string>Lucida Grande</string>
+	<key>cc.javelin.colloquy.style.standardWebKitStandardFont</key>
+	<string>Lucida Grande</string>
+	<key>WebKitDefaultFontSize</key>
+	<integer>11</integer>
+	<key>WebKitFixedFont</key>
+	<string>Lucida Grande</string>
+	<key>WebKitMinimumFontSize</key>
+	<integer>9</integer>
+	<key>WebKitSansSerifFont</key>
+	<string>Lucida Grande</string>
+	<key>WebKitSerifFont</key>
+	<string>Lucida Grande</string>
+	<key>WebKitStandardFont</key>
+	<string>Lucida Grande</string>
+	<key>WebKitJavaScriptEnabled</key>
+	<true/>
+	<key>NSColorPanelMode</key>
+	<string>5</string>
+	<key>JVChatWindowRuleSets</key>
+	<data>YnBsaXN0MDDUAQIDBAUGBwpZJGFyY2hpdmVyWCR2ZXJzaW9uVCR0b3BYJG9iamVjdHNfEA9OU0tleWVkQXJjaGl2ZXISAAGGoNEICVRyb290gAGvEDMLDBUiIyQlJio0NTY3O0JDSU1ATlJTVCMiJCVgZDQ1Nm5yd3h5eiKEJYWIiYoihCWUl5hVJG51bGzSDQ4PFFpOUy5vYmplY3RzViRjbGFzc6QQERITgAKAFoAlgCyAENMNFg4XHCFXTlMua2V5c6QYGRobgAeAEYAUgBWkHR4fIIADgASABYAGgBNVcnVsZXNecmVtZW1iZXJQYW5lbHNVdGl0bGVaaWRlbnRpZmllctINDicUoSiACIAQ0w0WDisvIaMsGS6ADIARgBKjMDEygAmACoALgBNZY3JpdGVyaW9uWmlnbm9yZUNhc2VZb3BlcmF0aW9u0g0OOBShOYANgBDUNjw9Dj4/QEFVcXVlcnlUa2luZBAHgA4QAoAPEAzSREVGR1gkY2xhc3Nlc1okY2xhc3NuYW1lokdIXxAdSlZDaGF0Vmlld0NyaXRlcmlvbkNvbnRyb2xsZXJYTlNPYmplY3TSREVKS6NLTEheTlNNdXRhYmxlQXJyYXlXTlNBcnJheQnSREVPUKNQUUhfEBNOU011dGFibGVEaWN0aW9uYXJ5XE5TRGljdGlvbmFyeV8QEVNtYXJ0IFRyYW5zY3JpcHRzWktPV0VEVzk1SzfTDRYOVVohpBlXWFmAEYAbgCOAJKRbXF1egBeAGIAZgBqAE9INDmEUoWKAHIAQ0w0WDmVpIaNmGS6AIIARgBKjamtsgB2AHoAfgBPSDQ5vFKFwgCGAENQ2PD0Oc3R1QRAAgCIQBoAPEAFbTWFpbiBXaW5kb3daWko3WkpZTzRBN9MNFg57fyGjfH1+gCmAKoAro4CBgoAmgCeAKIATV3NwZWNpYWzSDQ6GFKCAEF1jdXJyZW50V2luZG93WlQyTUZGME80QTfTDRYOi48ho4yNjoAwgDGAMqOQkZKALYAugC+AE9INDpUUoIAQWW5ld1dpbmRvd1lOQTVURkE1MzkACAARABsAJAApADIARABJAEwAUQBTAIkAjwCUAJ8ApgCrAK0ArwCxALMAtQC8AMQAyQDLAM0AzwDRANYA2ADaANwA3gDgAOYA9QD7AQYBCwENAQ8BEQEYARwBHgEgASIBJgEoASoBLAEuATgBQwFNAVIBVAFWAVgBYQFnAWwBbgFwAXIBdAF2AXsBhAGPAZIBsgG7AcABxAHTAdsB3AHhAeUB+wIIAhwCJwIuAjMCNQI3AjkCOwJAAkICRAJGAkgCSgJPAlECUwJVAlwCYAJiAmQCZgJqAmwCbgJwAnICdwJ5AnsCfQKGAogCigKMAo4CkAKcAqcCrgKyArQCtgK4ArwCvgLAAsICxALMAtEC0gLUAuIC7QL0AvgC+gL8Av4DAgMEAwYDCAMKAw8DEAMSAxwAAAAAAAACAQAAAAAAAACZAAAAAAAAAAAAAAAAAAADJg==</data>
+	<key>JVAutoRejoinRoomsOnKick</key>
+	<false/>
+	<key>JVAutoRejoinRoomsDelay</key>
+	<real>3</real>
+	<key>JVAutoAwayOnIdle</key>
+	<true/>
+	<key>WebKitThrottleWindowDisplay</key>
+	<true/>
+	<key>WebKitEnableDeferredUpdates</key>
+	<true/>
+</dict>
+</plist>

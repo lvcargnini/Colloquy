@@ -1,0 +1,16 @@
+#import "Basic.pch"
+
+#ifndef NSAppKitVersionNumber10_5
+	#define NSAppKitVersionNumber10_5 949
+#endif 
+
+#ifdef __OBJC__
+
+#import <WebKit/WebKit.h>
+#import <AddressBook/AddressBook.h>
+#import <AGRegex/AGRegex.h>
+#import <ChatCore/ChatCore.h>
+
+#endif
+
+#include <sys/xattr.h>

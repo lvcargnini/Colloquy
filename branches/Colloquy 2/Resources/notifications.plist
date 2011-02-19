@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatConnected</string>
+		<key>title</key>
+		<string>Server Connected</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatDisconnected</string>
+		<key>title</key>
+		<string>Server Disconnected</string>
+	</dict>
+	<dict>
+	<key>seperator</key>
+		<true />
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberJoinedRoom</string>
+		<key>title</key>
+		<string>Member Joined Chat Room</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberLeftRoom</string>
+		<key>title</key>
+		<string>Member Left Chat Room</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberKicked</string>
+		<key>title</key>
+		<string>Member Kicked From Room</string>
+	</dict>
+	<dict>
+	<key>seperator</key>
+		<true />
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatRoomInvite</string>
+		<key>title</key>
+		<string>Member Invited To Room</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVNickNameIdentifiedWithServer</string>
+		<key>title</key>
+		<string>Server Identified Nickname</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVNewMemosFromServer</string>
+		<key>title</key>
+		<string>New Memo Available</string>
+	</dict>
+	<dict>
+		<key>seperator</key>
+		<true />
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberPromotedAdministrator</string>
+		<key>title</key>
+		<string>Member Promoted to Administrator</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberDemotedAdministrator</string>
+		<key>title</key>
+		<string>Member Demoted from Administrator</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberPromotedOperator</string>
+		<key>title</key>
+		<string>Member Promoted to Operator</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberDemotedOperator</string>
+		<key>title</key>
+		<string>Member Demoted from Operator</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberPromotedHalfOperator</string>
+		<key>title</key>
+		<string>Member Promoted to Half-Operator</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberDemotedHalfOperator</string>
+		<key>title</key>
+		<string>Member Demoted from Half-Operator</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberVoiced</string>
+		<key>title</key>
+		<string>Member Voiced</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberDevoiced</string>
+		<key>title</key>
+		<string>Member Devoiced</string>
+	</dict>
+<!--	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberQuieted</string>
+		<key>title</key>
+		<string>Member Quieted</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMemberDequieted</string>
+		<key>title</key>
+		<string>Quieted Member Annulled</string>
+	</dict> -->
+	<dict>
+		<key>seperator</key>
+		<true />
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatRoomActivity</string>
+		<key>title</key>
+		<string>Chat Room Activity</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatReplyAfterAddressing</string>
+		<key>title</key>
+		<string>Reply After Addressing Member</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatFirstMessage</string>
+		<key>title</key>
+		<string>First Private Message</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatAdditionalMessages</string>
+		<key>title</key>
+		<string>Additional Private Messages</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatNoticeMessage</string>
+		<key>title</key>
+		<string>Notice Message</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatUnhandledNoticeMessage</string>
+		<key>title</key>
+		<string>Unhandled Notice Message</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatBeeped</string>
+		<key>title</key>
+		<string>Someone Beeped You</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatMentioned</string>
+		<key>title</key>
+		<string>Highlight Word Was Mentioned</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatUserBricked</string>
+		<key>title</key>
+		<string>User Was Bricked</string>
+	</dict>
+	<dict>
+		<key>seperator</key>
+		<true />
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatBuddyOnline</string>
+		<key>title</key>
+		<string>Buddy Came Online</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatBuddyOffline</string>
+		<key>title</key>
+		<string>Buddy Went Offline</string>
+	</dict>
+	<dict>
+		<key>seperator</key>
+		<true />
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVMessageIgnored</string>
+		<key>title</key>
+		<string>Message Ignored</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVUserIgnored</string>
+		<key>title</key>
+		<string>User Ignored</string>
+	</dict>
+	<dict>
+		<key>seperator</key>
+		<true />
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVChatError</string>
+		<key>title</key>
+		<string>Chat Error</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>JVPluginNotification</string>
+		<key>title</key>
+		<string>Plugin Notification</string>
+	</dict>
+</array>
+</plist>

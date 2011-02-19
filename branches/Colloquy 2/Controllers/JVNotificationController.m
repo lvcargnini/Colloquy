@@ -1,0 +1,185 @@
+#import <Growl/GrowlApplicationBridge.h>
+#import "JVNotificationController.h"
+#import "KABubbleWindowController.h"
+#import "KABubbleWindowView.h"
+
+#define GrowlApplicationBridge NSClassFromString( @"GrowlApplicationBridge" )
+
+static JVNotificationController *sharedInstance = nil;
+
+@interface JVNotificationController (JVNotificationControllerPrivate) <GrowlApplicationBridgeDelegate>
+- (void) _bounceIconOnce;
+- (void) _bounceIconContinuously;
+- (void) _showBubbleForIdentifier:(NSString *) identifier withContext:(NSDictionary *) context andPrefs:(NSDictionary *) eventPrefs;
+- (void) _playSound:(NSString *) path;
+@end
+
+#pragma mark -
+
+@implementation JVNotificationController
++ (JVNotificationController *) defaultController {
+	return ( sharedInstance ? sharedInstance : ( sharedInstance = [[self alloc] init] ) );
+}
+
+#pragma mark -
+
+- (id) init {
+	if( ( self = [super init] ) ) {
+		_bubbles = [[NSMutableDictionary dictionary] retain];
+		_sounds = [[NSMutableDictionary alloc] init];
+
+		_useGrowl = ( GrowlApplicationBridge && [GrowlApplicationBridge isGrowlInstalled] && ! [[[NSUserDefaults standardUserDefaults] objectForKey:@"DisableGrowl"] boolValue] );
+
+		if( _useGrowl ) [GrowlApplicationBridge setGrowlDelegate:self];
+	}
+
+	return self;
+}
+
+- (void) dealloc {
+	[_bubbles release];
+	[_sounds release];
+
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	if( self == sharedInstance ) sharedInstance = nil;
+
+	_bubbles = nil;
+	_sounds = nil;
+
+	[super dealloc];
+}
+
+- (void) performNotification:(NSString *) identifier withContextInfo:(NSDictionary *) context {
+	NSDictionary *eventPrefs = [[NSUserDefaults standardUserDefaults] dictionaryForKey:[NSString stringWithFormat:@"JVNotificationSettings %@", identifier]];
+
+	if( [[eventPrefs objectForKey:@"playSound"] boolValue] && ! [[NSUserDefaults standardUserDefaults] boolForKey:@"JVChatNotificationsMuted"] ) {
+		if( [[eventPrefs objectForKey:@"playSoundOnlyIfBackground"] boolValue] && ! [[NSApplication sharedApplication] isActive] )
+			[self _playSound:[eventPrefs objectForKey:@"soundPath"]];
+		else if( ! [[eventPrefs objectForKey:@"playSoundOnlyIfBackground"] boolValue] )
+			[self _playSound:[eventPrefs objectForKey:@"soundPath"]];
+	}
+
+	if( [[eventPrefs objectForKey:@"bounceIcon"] boolValue] ) {
+		if( [[eventPrefs objectForKey:@"bounceIconUntilFront"] boolValue] )
+			[self _bounceIconContinuously];
+		else [self _bounceIconOnce];
+	}
+
+	if( [[eventPrefs objectForKey:@"showBubble"] boolValue] ) {
+		if( [[eventPrefs objectForKey:@"showBubbleOnlyIfBackground"] boolValue] && ! [[NSApplication sharedApplication] isActive] )
+			[self _showBubbleForIdentifier:identifier withContext:context andPrefs:eventPrefs];
+		else if( ! [[eventPrefs objectForKey:@"showBubbleOnlyIfBackground"] boolValue] )
+			[self _showBubbleForIdentifier:identifier withContext:context andPrefs:eventPrefs];
+	}
+
+	NSMethodSignature *signature = [NSMethodSignature methodSignatureWithReturnAndArgumentTypes:@encode( void ), @encode( NSString * ), @encode( NSDictionary * ), @encode( NSDictionary * ), nil];
+	NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+
+	[invocation setSelector:@selector( performNotification:withContextInfo:andPreferences: )];
+	[invocation setArgument:&identifier atIndex:2];
+	[invocation setArgument:&context atIndex:3];
+	[invocation setArgument:&eventPrefs atIndex:4];
+
+	[[MVChatPluginManager defaultManager] makePluginsPerformInvocation:invocation];
+}
+@end
+
+#pragma mark -
+
+@implementation JVNotificationController (JVNotificationControllerPrivate)
+- (void) _bounceIconOnce {
+	[[NSApplication sharedApplication] requestUserAttention:NSInformationalRequest];
+}
+
+- (void) _bounceIconContinuously {
+	[[NSApplication sharedApplication] requestUserAttention:NSCriticalRequest];
+}
+
+- (void) _showBubbleForIdentifier:(NSString *) identifier withContext:(NSDictionary *) context andPrefs:(NSDictionary *) eventPrefs {
+	KABubbleWindowController *bubble = nil;
+	NSImage *icon = [context objectForKey:@"image"];
+	id title = [context objectForKey:@"title"];
+	id description = [context objectForKey:@"description"];
+
+	if( ! icon ) icon = [[NSApplication sharedApplication] applicationIconImage];
+
+	if( _useGrowl ) {
+		NSString *desc = description;
+		if( [desc isKindOfClass:[NSAttributedString class]] ) desc = [description string];
+		NSString *programName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+		NSDictionary *notification = [NSDictionary dictionaryWithObjectsAndKeys:
+			programName, GROWL_APP_NAME,
+			identifier, GROWL_NOTIFICATION_NAME,
+			title, GROWL_NOTIFICATION_TITLE,
+			desc, GROWL_NOTIFICATION_DESCRIPTION,
+			[icon TIFFRepresentation], GROWL_NOTIFICATION_ICON,
+			[context objectForKey:@"coalesceKey"], GROWL_NOTIFICATION_IDENTIFIER,
+			// this next key is not guaranteed to be non-nil
+			// make sure it stays last, unless you want to ensure it's non-nil
+			[eventPrefs objectForKey:@"keepBubbleOnScreen"], GROWL_NOTIFICATION_STICKY,
+			nil];
+		[GrowlApplicationBridge notifyWithDictionary:notification];
+	} else {
+		if( ( bubble = [_bubbles objectForKey:[context objectForKey:@"coalesceKey"]] ) ) {
+			[(id)bubble setTitle:title];
+			[(id)bubble setText:description];
+			[(id)bubble setIcon:icon];
+		} else {
+			bubble = [KABubbleWindowController bubbleWithTitle:title text:description icon:icon];
+		}
+
+		[bubble setAutomaticallyFadesOut:(! [[eventPrefs objectForKey:@"keepBubbleOnScreen"] boolValue] )];
+		[bubble setTarget:[context objectForKey:@"target"]];
+		[bubble setAction:NSSelectorFromString( [context objectForKey:@"action"] )];
+		[bubble setRepresentedObject:[context objectForKey:@"representedObject"]];
+		[bubble startFadeIn];
+
+		if( [(NSString *)[context objectForKey:@"coalesceKey"] length] ) {
+			[bubble setDelegate:self];
+			[_bubbles setObject:bubble forKey:[context objectForKey:@"coalesceKey"]];
+		}
+	}
+}
+
+- (void) bubbleDidFadeOut:(KABubbleWindowController *) bubble {
+	NSMutableDictionary *bubbles = [[_bubbles copy] autorelease];
+	for( NSString *key in bubbles ) {
+		KABubbleWindowController *cBubble = [bubbles objectForKey:key];
+		if( cBubble == bubble )
+			[_bubbles removeObjectForKey:key];
+	}
+}
+
+- (void) _playSound:(NSString *) path {
+	if( ! path ) return;
+
+	if( ! [path isAbsolutePath] )
+		path = [[NSString stringWithFormat:@"%@/Sounds", [[NSBundle mainBundle] resourcePath]] stringByAppendingPathComponent:path];
+
+	NSSound *sound;
+	if( ! (sound = [_sounds objectForKey:path]) ) {
+		sound = [[NSSound alloc] initWithContentsOfFile:path byReference:YES];
+		[_sounds setObject:sound forKey:path];
+		[sound autorelease];
+	}
+
+	// When run on a laptop using battery power, the play method may block while the audio
+	// hardware warms up.  If it blocks, the sound WILL NOT PLAY after the block ends.
+	// To get around this, we check to make sure the sound is playing, and if it isn't
+	// we call the play method again.
+
+	[sound play];
+	if( ! [sound isPlaying] ) [sound play];
+}
+
+- (NSDictionary *) registrationDictionaryForGrowl {
+	NSMutableArray *notifications = [NSMutableArray array];
+	for( NSDictionary *info in [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"notifications" ofType:@"plist"]] ) {
+		if( ! [info objectForKey:@"seperator"] )
+			[notifications addObject:[info objectForKey:@"identifier"]];
+		
+	}
+
+	return [NSDictionary dictionaryWithObjectsAndKeys:notifications, GROWL_NOTIFICATIONS_ALL, notifications, GROWL_NOTIFICATIONS_DEFAULT, nil];
+}
+@end
